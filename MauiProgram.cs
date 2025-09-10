@@ -13,7 +13,8 @@ namespace Farm
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .Services.AddSingleton<DbOps>();
 
 #if DEBUG
     		builder.Logging.AddDebug();
