@@ -21,10 +21,10 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>Farm</ApplicationTitle>
+		<ApplicationTitle>FarmX</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.farm</ApplicationId>
+		<ApplicationId>com.FarmX</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

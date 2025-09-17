@@ -19,7 +19,7 @@ public class Cow : Animal
 
     public override string ToString()
     {
-        return $"{ID,-6} {Expense,-8} {Weight,-7} {Colour,-7} {Milk,-5}";
+        return $"{base.GetType().Name,-6}{ID,-6} {Expense,-8} {Weight,-7} {Colour,-7} {Milk,-5}";
     }
 }
 
@@ -30,6 +30,6 @@ public class Cow : Animal
 
     public override string ToString()
     {
-        return $"{ID,-6} {Expense,-8} {Weight,-7} {Colour,-7} {Wool,-5}";
+        return $"{base.GetType().Name,-6}{ID,-6} {Expense,-8} {Weight,-7} {Colour,-7} {Wool,-5}";
     }
 }
