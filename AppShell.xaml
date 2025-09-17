@@ -4,11 +4,19 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Farm"
-    Title="Farm">
+    xmlns:pages="clr-namespace:Farm.Pages"
+    Shell.NavBarIsVisible="false">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <Tab Title="Dashboard">
+            <ShellContent ContentTemplate="{DataTemplate pages:DashBoard}"/>
+        </Tab>
+        <Tab Title="Livestock">
+            <ShellContent ContentTemplate="{DataTemplate pages:DashBoard}"/>
+        </Tab>
+        <Tab Title="Reports">
+            <ShellContent ContentTemplate="{DataTemplate pages:DashBoard}"/>
+        </Tab>
+    </TabBar>
 
 </Shell>
