@@ -1,4 +1,4 @@
-﻿namespace Farm;
+﻿namespace Farm.Utility;
 
 public class Calculator
 {

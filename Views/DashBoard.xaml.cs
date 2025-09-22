@@ -1,4 +1,4 @@
-namespace Farm.Pages;
+namespace Farm.Views;
 
 public partial class DashBoard : ContentPage
 {

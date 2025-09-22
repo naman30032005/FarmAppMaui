@@ -1,4 +1,4 @@
-﻿namespace Farm;
+﻿namespace Farm.Model;
 
 // Base class To Store Common Animal Data
 public class Animal
