@@ -8,7 +8,9 @@ public class Animal
 
     public float Weight { get; set; }
 
-    public float Colour { get; set; }
+    public string Colour { get; set; }
+
+    public string AnimalType => GetType().Name;
 }
 
 // Cow Class To store Data Unique to Cows
