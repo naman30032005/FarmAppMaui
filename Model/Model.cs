@@ -4,11 +4,13 @@
 public class Animal
 {
     [PrimaryKey, AutoIncrement] public int ID { get; set; }
+
+    public string AnimalType => GetType().Name;
     public float Expense { get; set; } // the cost for raising the animal
 
     public float Weight { get; set; }
 
-    public float Colour { get; set; }
+    public string Colour{ get; set; }
 }
 
 // Cow Class To store Data Unique to Cows
