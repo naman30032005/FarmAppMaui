@@ -5,11 +5,11 @@
              x:Class="Farm.Views.Livestock"
              Title="Livestock">
 
-    <Grid RowDefinitions="*,50" RowSpacing="20">
+    <Grid RowDefinitions="*,50,20" RowSpacing="20">
         <Border StrokeShape="RoundRectangle 10" Margin="40" Padding="10">
             <CollectionView ItemsSource="{Binding animals}" ItemsUpdatingScrollMode="KeepItemsInView" SelectionMode="Single">
                 <CollectionView.Header>
-                    <Grid BackgroundColor="Black" ColumnDefinitions="*,*,*,*,*,*">
+                    <Grid BackgroundColor="Black" ColumnDefinitions="*,*,*,*,*,*" Padding="5">
                         <Label Text="Type" Grid.Column="0"/>
                         <Label Text="ID" Grid.Column="1"/>
                         <Label Text="Weight" Grid.Column="2"/>
@@ -35,7 +35,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Border>
-        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center">
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
             <Button Text="Add New"/>
         </HorizontalStackLayout>
 
