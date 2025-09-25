@@ -13,10 +13,10 @@
             <ShellContent ContentTemplate="{DataTemplate views:DashBoard}"/>
         </Tab>
         <Tab Title="Livestock">
-            <ShellContent ContentTemplate="{DataTemplate views:DashBoard}"/>
+            <ShellContent ContentTemplate="{DataTemplate views:Livestock}"/>
         </Tab>
         <Tab Title="Reports">
-            <ShellContent ContentTemplate="{DataTemplate views:DashBoard}"/>
+            <ShellContent ContentTemplate="{DataTemplate views:Report}"/>
         </Tab>
     </TabBar>
 
