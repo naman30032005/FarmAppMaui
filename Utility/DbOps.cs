@@ -4,7 +4,7 @@
 public class DbOps
 {
     // COnnection String
-    private readonly SQLiteConnection _conn;
+    private readonly SQLiteAsyncConnection _conn;
 
     public DbOps()
     {
@@ -21,35 +21,27 @@ public class DbOps
             File.WriteAllBytes(dbPath, ms.ToArray());
         }
         // open the connection and create the tables if does not exist
-        _conn = new SQLiteConnection(dbPath);
-        _conn.CreateTables<Cow, Sheep>();
+        _conn = new SQLiteAsyncConnection(dbPath);
+        _conn.CreateTablesAsync<Cow, Sheep>().Wait();
     }
 
     // Reads the data and returns a list of all Animals
-    public List<Animal> ReadData()
+    public async Task<List<Animal>> ReadDataAsync()
     {
         var animals = new List<Animal>();
-        animals.AddRange(_conn.Table<Cow>().ToList());
-        animals.AddRange(_conn.Table<Sheep>().ToList());
+        animals.AddRange(await _conn.Table<Cow>().ToListAsync());
+        animals.AddRange(await _conn.Table<Sheep>().ToListAsync());
         return animals;
     }
 
     // Insert operation for DataBase
-    public int Insert(Animal animal)
-    {
-        return _conn.Insert(animal);
-    }
+    public Task<int> Insert(Animal animal) => _conn.InsertAsync(animal);
 
     // Delete Operations
-    public int Delete(Animal animal)
-    {
-        return _conn.Delete(animal);
-    }
+
+    public Task<int> Delete(Animal animal) => _conn.DeleteAsync(animal);
 
     //Update Operations
-    public int Update(Animal animal)
-    {
-        return _conn.Update(animal);
-    }
+    public Task<int> Update(Animal animal) => _conn.UpdateAsync(animal);
 
 }
