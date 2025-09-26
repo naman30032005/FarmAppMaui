@@ -6,8 +6,8 @@
              xmlns:model="clr-namespace:Farm.Model"
              x:DataType="viewmodel:LivestockPageVM"
              Title="Livestock">
-    <Grid RowDefinitions="*,50,20" RowSpacing="10">
-        <Border Margin="10" Padding="5" StrokeShape="RoundRectangle 10">
+    <Grid RowDefinitions="*,50,20" ColumnDefinitions="50,*,*,*,*,50" RowSpacing="10"  ColumnSpacing="20">
+        <Border Margin="10" Padding="5" StrokeShape="RoundRectangle 10" Grid.ColumnSpan="4">
             <CollectionView ItemsSource="{Binding animals}"
                         SelectionMode="Single" 
                         ItemsUpdatingScrollMode="KeepItemsInView">
@@ -38,11 +38,9 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Border>
-        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Fill">
-            <Button Text="Add"/>
-            <Button Text="Update"/>
-            <Button Text="Delete"/>
-            <Button Text="Sort"/>
-        </HorizontalStackLayout>
+        <Button Text="Add" Grid.Column="1" Grid.Row="1"/>
+        <Button Text="Update" Grid.Column="2" Grid.Row="1"/>
+        <Button Text="Delete" Grid.Column="3" Grid.Row="1"/>
+        <Button Text="Sort" Grid.Column="4" Grid.Row="1"/>
     </Grid>
 </ContentPage>
