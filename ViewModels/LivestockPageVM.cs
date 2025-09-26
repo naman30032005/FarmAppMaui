@@ -2,14 +2,20 @@
 
 namespace Farm.ViewModels;
 
-public class LivestockPageVM:BaseVM
+public partial class LivestockPageVM:BaseVM
 {
     private readonly DbOps _db;
     public ObservableCollection<AnimalVM> animals { get; } = new();
 
+    public List<String> SortOptions { get; }
+
+    [ObservableProperty]
+    private string selectedSortOption;
+
     public LivestockPageVM(DbOps dbs)
     {
         this._db = dbs;
+        SortOptions = new() { "ID ⬇️", "ID ⬆️"};
     }
 
     public async Task FillList()
