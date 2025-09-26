@@ -7,7 +7,7 @@
              x:DataType="viewmodel:LivestockPageVM"
              Title="Livestock">
     <Grid RowDefinitions="*,50,20" ColumnDefinitions="50,*,*,*,*,50" RowSpacing="10"  ColumnSpacing="20">
-        <Border Margin="10" Padding="5" StrokeShape="RoundRectangle 10" Grid.ColumnSpan="4">
+        <Border Margin="10" Padding="5" StrokeShape="RoundRectangle 10" Grid.ColumnSpan="6">
             <CollectionView ItemsSource="{Binding animals}"
                         SelectionMode="Single" 
                         ItemsUpdatingScrollMode="KeepItemsInView">
@@ -29,10 +29,8 @@
                             <Label Text="{Binding Weight}" Grid.Column="2"/>
                             <Label Text="{Binding Colour}" Grid.Column="3"/>
                             <Label Text="{Binding Expense}" Grid.Column="4"/>
-                            <Label Text="{Binding Milk}" Grid.Column="5" 
-                        IsVisible="{Binding AnimalType, Converter={StaticResource CowVisibilityConverter}}"/>
-                            <Label Text="{Binding Wool}" Grid.Column="5" 
-                        IsVisible="{Binding AnimalType, Converter={StaticResource SheepVisibilityConverter}}"/>
+                            <Label Text="{Binding Milk}" Grid.Column="5" />
+                            <Label Text="{Binding Wool}" Grid.Column="5" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
