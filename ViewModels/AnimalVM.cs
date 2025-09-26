@@ -37,6 +37,8 @@ public partial class AnimalVM : ObservableObject
     [ObservableProperty]
     private float wool;
 
+    public string MilkOrWoolValue => animal switch { Cow c => $"{c.Milk:0.##}", Sheep s => $"{s.Wool:0.##}", _ => "-" };
+
     // syncing back to the model;
     partial void OnExpenseChanged(float value) => animal.Expense = value;
     partial void OnWeightChanged(float value) => animal.Weight = value;
