@@ -2,8 +2,18 @@ namespace Farm.Views;
 
 public partial class Livestock : ContentPage
 {
-	public Livestock()
+	LivestockPageVM viewmodel;
+	public Livestock(LivestockPageVM vm)
 	{
 		InitializeComponent();
+		BindingContext = vm;
+		viewmodel = vm;
 	}
+
+	protected override async void OnAppearing()
+	{
+		base.OnAppearing();
+		await viewmodel.FillList();
+	}
+
 }

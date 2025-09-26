@@ -2,11 +2,47 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Farm.Views.Livestock"
+             xmlns:viewmodel="clr-namespace:Farm.ViewModels"
+             xmlns:model="clr-namespace:Farm.Model"
+             x:DataType="viewmodel:LivestockPageVM"
              Title="Livestock">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="*,50,20" RowSpacing="10">
+        <Border Margin="10" Padding="5" StrokeShape="RoundRectangle 10">
+            <CollectionView ItemsSource="{Binding animals}"
+                        SelectionMode="Single" 
+                        ItemsUpdatingScrollMode="KeepItemsInView">
+                <CollectionView.Header>
+                    <Grid BackgroundColor="Black" ColumnDefinitions="*,*,*,*,*,*" Padding="5">
+                        <Label Text="Type" Grid.Column="0"/>
+                        <Label Text="ID" Grid.Column="1"/>
+                        <Label Text="Weight" Grid.Column="2"/>
+                        <Label Text="Colour" Grid.Column="3"/>
+                        <Label Text="Expense" Grid.Column="4"/>
+                        <Label Text="Milk/Wool" Grid.Column="5"/>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="viewmodel:AnimalVM">
+                        <Grid ColumnDefinitions="*,*,*,*,*,*">
+                            <Label Text="{Binding AnimalType}" Grid.Column="0"/>
+                            <Label Text="{Binding ID}" Grid.Column="1"/>
+                            <Label Text="{Binding Weight}" Grid.Column="2"/>
+                            <Label Text="{Binding Colour}" Grid.Column="3"/>
+                            <Label Text="{Binding Expense}" Grid.Column="4"/>
+                            <Label Text="{Binding Milk}" Grid.Column="5" 
+                        IsVisible="{Binding AnimalType, Converter={StaticResource CowVisibilityConverter}}"/>
+                            <Label Text="{Binding Wool}" Grid.Column="5" 
+                        IsVisible="{Binding AnimalType, Converter={StaticResource SheepVisibilityConverter}}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Border>
+        <HorizontalStackLayout Grid.Row="1">
+            <Button/>
+            <Button/>
+            <Button/>
+            <Button/>
+        </HorizontalStackLayout>
+    </Grid>
 </ContentPage>
