@@ -18,9 +18,9 @@ public partial class AnimalVM : ObservableObject
         if (animal is Sheep sheep) wool = sheep.Wool; 
     }
 
-    public int IT => animal.ID;
+    public int ID => animal.ID;
 
-    public string animalType => animal.AnimalType;
+    public string AnimalType => animal.AnimalType;
 
     [ObservableProperty]
     private float expense;
