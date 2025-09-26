@@ -38,11 +38,11 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Border>
-        <HorizontalStackLayout Grid.Row="1">
-            <Button/>
-            <Button/>
-            <Button/>
-            <Button/>
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Fill">
+            <Button Text="Add"/>
+            <Button Text="Update"/>
+            <Button Text="Delete"/>
+            <Button Text="Sort"/>
         </HorizontalStackLayout>
     </Grid>
 </ContentPage>
