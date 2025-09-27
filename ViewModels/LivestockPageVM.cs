@@ -15,7 +15,8 @@ public partial class LivestockPageVM:BaseVM
     public LivestockPageVM(DbOps dbs)
     {
         this._db = dbs;
-        SortOptions = new() { "ID ⬇️", "ID ⬆️"};
+        SortOptions = new() { "None", "ID ⬇️", "ID ⬆️"};
+        SelectedSortOption = SortOptions[0];
     }
 
     public async Task FillList()
