@@ -6,6 +6,8 @@
              xmlns:model="clr-namespace:Farm.Model"
              x:DataType="viewmodel:LivestockPageVM"
              Title="Livestock">
+    <ContentPage.Resources>
+    </ContentPage.Resources>
     <Grid RowDefinitions="Auto,*,50,20" ColumnDefinitions="20,*,*,*,*,20" RowSpacing="10"  ColumnSpacing="20">
         <HorizontalStackLayout VerticalOptions="Center" Grid.Column="4" Grid.ColumnSpan="2" Spacing="20" Padding="5">
             <Label Text="Sort:" VerticalOptions="Center" FontAttributes="Bold"/>
@@ -18,7 +20,8 @@
             <RefreshView IsRefreshing="{Binding IsBusy}" >
                 <CollectionView ItemsSource="{Binding animals}"
                         SelectionMode="Single" 
-                        ItemsUpdatingScrollMode="KeepItemsInView">
+                        ItemsUpdatingScrollMode="KeepItemsInView"
+                        Grid.ColumnSpan="6">
                     <CollectionView.Header>
                         <Grid BackgroundColor="Black" ColumnDefinitions="*,*,*,*,*,*" Padding="5">
                             <Label Text="Type" Grid.Column="0"/>
@@ -31,7 +34,7 @@
                     </CollectionView.Header>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewmodel:AnimalVM">
-                            <Grid ColumnDefinitions="*,*,*,*,*,*">
+                            <Grid ColumnDefinitions="*,*,*,*,*,*"  Padding="5" Grid.ColumnSpan="6" HorizontalOptions="Fill">
                                 <Label Text="{Binding AnimalType}" Grid.Column="0"/>
                                 <Label Text="{Binding ID}" Grid.Column="1"/>
                                 <Label Text="{Binding Weight}" Grid.Column="2"/>
