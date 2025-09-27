@@ -1,4 +1,5 @@
 ﻿using Farm.Utitlity;
+using Farm.Views;
 using Microsoft.Extensions.Logging;
 
 namespace Farm;
@@ -16,6 +17,7 @@ public static class MauiProgram
             });
         builder.Services.AddSingleton<DbOps>();
         builder.Services.AddSingleton<LivestockPageVM>();
+        builder.Services.AddSingleton<Livestock>();
 
 #if DEBUG
 		builder.Logging.AddDebug();
