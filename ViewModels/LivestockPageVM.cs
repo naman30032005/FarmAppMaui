@@ -35,23 +35,23 @@ public partial class LivestockPageVM:BaseVM
     }
 
     [RelayCommand]
-    async Task AddAnimalCommand()
+    async Task AddAnimal()
     {
-        await Shell.Current.GoToAsync(nameof(AddAnimalPage));
+        await Shell.Current.GoToAsync($"{nameof(AddAnimalPage)}",true);
     }
 
     [RelayCommand]
-    async Task UpdateCommand()
+    async Task UpdateAniamal()
     {
         await Shell.Current.GoToAsync("");
     }
     [RelayCommand]
-    async Task DeleteCommand()
+    async Task DeleteAnimal()
     {
         await Shell.Current.GoToAsync("");
     }
     [RelayCommand]
-    async Task QueryCommand()
+    async Task QueryAnimal()
     {
         await Shell.Current.GoToAsync("");
     }
