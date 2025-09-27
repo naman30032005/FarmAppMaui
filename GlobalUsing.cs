@@ -6,3 +6,4 @@ global using CommunityToolkit.Mvvm.Input;
 global using Farm.Model;
 global using Farm.ViewModels;
 global using Farm.Utility;
+global using Farm.Views;
