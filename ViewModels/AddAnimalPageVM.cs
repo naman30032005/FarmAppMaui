@@ -1,8 +1,6 @@
-﻿using Farm.Utitlity;
+﻿namespace Farm.ViewModels;
 
-namespace Farm.ViewModels;
-
-public partial class AddAnimalPageVM:BaseVM
+public partial class AddAnimalPageVM : BaseVM
 {
     private readonly DbOps _dbs;
 
@@ -12,20 +10,24 @@ public partial class AddAnimalPageVM:BaseVM
     [ObservableProperty] private float expense;
     [ObservableProperty] private float milkOrWool;
 
+    public string[] TypeOptions { get => [nameof(Cow), nameof(Sheep)]; } 
+    public string ProductToDisplay { get => (AnimalType == nameof(Sheep)) ? "Wool" : "Milk"; }
     public AddAnimalPageVM(DbOps dbs)
     {
         _dbs = dbs;
+        
     }
 
     [RelayCommand]
-    public async void ReturnToMenu()
+    public static async Task ReturnToMenu()
     {
         await Shell.Current.GoToAsync("..");
     }
 
     [RelayCommand]
-    public async void SaveCommand()
+    public async Task Save()
     {
+
         if (AnimalType == nameof(Sheep))
         {
             Sheep sheep = new()
@@ -50,5 +52,11 @@ public partial class AddAnimalPageVM:BaseVM
 
             await _dbs.Insert(cow);
         }
+    }
+
+    public static bool checkFields()
+    {
+        //TO DO : Check the input and convert properly
+        return false;
     }
 }

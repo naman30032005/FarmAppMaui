@@ -1,6 +1,4 @@
-﻿using Farm.Utitlity;
-using Farm.Views;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace Farm;
 public static class MauiProgram

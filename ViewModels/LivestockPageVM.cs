@@ -1,7 +1,4 @@
-﻿using Farm.Utitlity;
-using Farm.Views;
-
-namespace Farm.ViewModels;
+﻿namespace Farm.ViewModels;
 
 public partial class LivestockPageVM:BaseVM
 {

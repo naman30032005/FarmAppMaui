@@ -21,7 +21,7 @@ public class Utils
         else
         {
             if (Color.TryParse(value, out Color color)) return color.ToString();
-            else return string.Empty;
+            else return BAD_Color;
         }
     }
 }
