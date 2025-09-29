@@ -1,4 +1,6 @@
-﻿namespace Farm.ViewModels;
+﻿using System.Runtime.CompilerServices;
+
+namespace Farm.ViewModels;
 
 public partial class AddAnimalPageVM : BaseVM
 {
@@ -66,6 +68,8 @@ public partial class AddAnimalPageVM : BaseVM
 
         if (entryAdded > 0) await Shell.Current.DisplayAlert("Success", $"{entryAdded} {AnimalType} was added Successfully", "Yes");
         else await Shell.Current.DisplayAlert("Error", "Your entry was not added", "OK");
+
+        ResetFields();
     }
 
     public (bool isValid, string errorMsg, float weight, float expense, float product, string colour) CheckFields()
@@ -85,5 +89,13 @@ public partial class AddAnimalPageVM : BaseVM
             return (false, "Invalid colour entered.", 0, 0, 0, "");
 
         return (true, string.Empty, w, e, m, c);
+    }
+
+    public void ResetFields()
+    {
+        this.Expense = string.Empty;
+        this.Color = string.Empty;
+        this.Weight = string.Empty;
+        this.MilkOrWool = string.Empty;
     }
 }
