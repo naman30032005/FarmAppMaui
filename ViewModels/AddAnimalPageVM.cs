@@ -64,7 +64,7 @@ public partial class AddAnimalPageVM : BaseVM
             entryAdded = await _dbs.Insert(cow);
         }
 
-        if (entryAdded > 0) await Shell.Current.DisplayAlert("Success", $"{entryAdded} {AnimalType}'s was added Successfully", "Yes");
+        if (entryAdded > 0) await Shell.Current.DisplayAlert("Success", $"{entryAdded} {AnimalType} was added Successfully", "Yes");
         else await Shell.Current.DisplayAlert("Error", "Your entry was not added", "OK");
     }
 
