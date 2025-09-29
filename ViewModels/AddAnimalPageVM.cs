@@ -28,12 +28,13 @@ public partial class AddAnimalPageVM : BaseVM
     [RelayCommand]
     public async Task Save()
     {
+        var entryAdded = 0;
 
         var (isValid, errorMsg, w, e, m, c) = CheckFields();
 
         if (!isValid)
         {
-            await Application.Current.MainPage.DisplayAlert("Error", errorMsg, "OK");
+            await Shell.Current.DisplayAlert("Error", errorMsg, "OK");
             return;
         }
 
@@ -48,7 +49,7 @@ public partial class AddAnimalPageVM : BaseVM
                 Wool = m
             };
 
-            await _dbs.Insert(sheep);
+            entryAdded = await _dbs.Insert(sheep);
         }
         else if (AnimalType == nameof(Cow))
         {
@@ -60,8 +61,11 @@ public partial class AddAnimalPageVM : BaseVM
                 Milk = m
             };
 
-            await _dbs.Insert(cow);
+            entryAdded = await _dbs.Insert(cow);
         }
+
+        if (entryAdded > 0) await Shell.Current.DisplayAlert("Success", $"{entryAdded} {AnimalType}'s was added Successfully", "Yes");
+        else await Shell.Current.DisplayAlert("Error", "Your entry was not added", "OK");
     }
 
     public (bool isValid, string errorMsg, float weight, float expense, float product, string colour) CheckFields()
@@ -77,7 +81,7 @@ public partial class AddAnimalPageVM : BaseVM
             return (false, "Invalid expense entered.", 0, 0, 0, "");
         if (m == float.MinValue)
             return (false, $"Invalid {ProductToDisplay} entered.", 0, 0, 0, "");
-        if (string.IsNullOrWhiteSpace(c))
+        if (string.IsNullOrEmpty(c))
             return (false, "Invalid colour entered.", 0, 0, 0, "");
 
         return (true, string.Empty, w, e, m, c);
