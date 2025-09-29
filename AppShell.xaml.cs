@@ -7,7 +7,6 @@ public partial class AppShell : Shell
         InitializeComponent();
         Routing.RegisterRoute(nameof(AddAnimalPage),typeof(AddAnimalPage));
         Routing.RegisterRoute(nameof(UpdateAnimalPage),typeof(UpdateAnimalPage));
-        Routing.RegisterRoute(nameof(DeleteAnimalPage),typeof(DeleteAnimalPage));
         Routing.RegisterRoute(nameof(QueryPage),typeof(QueryPage));
     }
 }
