@@ -80,7 +80,7 @@ public partial class LivestockPageVM:BaseVM
 
         IsBusy = true;
 
-        await Task.Delay(1000);
+        await Task.Delay(1000); // For better UI
 
         await Task.Run(() =>
         {

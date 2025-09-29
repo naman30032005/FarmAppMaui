@@ -16,7 +16,7 @@
     </ContentPage.Resources>
     <Grid RowDefinitions="Auto,*,50,20" ColumnDefinitions="*,*,*,*" RowSpacing="10" ColumnSpacing="20" Padding="30,5">
 
-        <Label Text="Animals in the Farm" FontSize="30" FontAttributes="Bold" Grid.Column="1" HorizontalTextAlignment="Center" Grid.ColumnSpan="2" VerticalOptions="Center"/>
+        <Label Text="Animals in the Farm" FontSize="30" FontAttributes="Bold" Grid.Column="1" HorizontalTextAlignment="Start" Grid.ColumnSpan="2" VerticalOptions="Center"/>
 
         <HorizontalStackLayout VerticalOptions="Center" Grid.Column="3" Spacing="20" Padding="5" HorizontalOptions="End">
             <Label Text="Sort :" VerticalOptions="Center" FontAttributes="Bold"  FontSize="16" HorizontalOptions="Fill"/>
