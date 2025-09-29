@@ -1,7 +1,7 @@
 ﻿namespace Farm.ViewModels;
 
-[QueryProperty("AnimalVM", "AnimalVM")]
-public class UpdateAnimalPageVM:BaseVM
+[QueryProperty("Animal", "AnimalVM")]
+public partial class UpdateAnimalPageVM : BaseVM
 {
     private readonly DbOps _db;
     [ObservableProperty] private AnimalVM animal;
@@ -9,5 +9,11 @@ public class UpdateAnimalPageVM:BaseVM
     public UpdateAnimalPageVM(DbOps dbs)
     {
         _db = dbs;
+    }
+
+    [RelayCommand]
+    async Task ReturnToMenu()
+    {
+        await Shell.Current.GoToAsync("..");
     }
 }

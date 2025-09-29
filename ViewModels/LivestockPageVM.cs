@@ -51,7 +51,7 @@ public partial class LivestockPageVM:BaseVM
     {
         await Shell.Current.GoToAsync($"{nameof(UpdateAnimalPage)}", true,
             new Dictionary<string, object>{ 
-                {"animal", SelectedAnimal} 
+                {"AnimalVM", SelectedAnimal} 
             });
     }
     [RelayCommand]

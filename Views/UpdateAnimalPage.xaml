@@ -2,12 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Farm.Views.UpdateAnimalPage"
+             xmlns:viewmodel="clr-namespace:Farm.ViewModels"
+             x:DataType="viewmodel:UpdateAnimalPageVM"
              Shell.PresentationMode="ModalAnimated"
              Title="UpdateAnimalPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid ColumnDefinitions="50,*,*,50" RowDefinitions="*,*,*,*,*,*" ColumnSpacing="20" RowSpacing="20">
+        <Grid Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="2" Grid.Column="1">
+            <Label Text="ID"/>
+        </Grid>
+        
+        <Button Grid.Column="1" Grid.Row="5" Text="Return" Command="ReturnToMenuCommand"/>
+        <Button Grid.Column="2" Grid.Row="5" Text="Save" Command="UpdateCommand"/>
+    </Grid>
 </ContentPage>
