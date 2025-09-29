@@ -1,6 +1,4 @@
-﻿using Farm.Utitlity;
-
-namespace Farm.ViewModels;
+﻿namespace Farm.ViewModels;
 
 public partial class LivestockPageVM:BaseVM
 {
@@ -33,5 +31,26 @@ public partial class LivestockPageVM:BaseVM
         IsBusy = false;
     }
 
+    [RelayCommand]
+    async Task AddAnimal()
+    {
+        await Shell.Current.GoToAsync($"{nameof(AddAnimalPage)}",true);
+    }
+
+    [RelayCommand]
+    async Task UpdateAniamal()
+    {
+        await Shell.Current.GoToAsync("");
+    }
+    [RelayCommand]
+    async Task DeleteAnimal()
+    {
+        await Shell.Current.GoToAsync("");
+    }
+    [RelayCommand]
+    async Task QueryAnimal()
+    {
+        await Shell.Current.GoToAsync("");
+    }
 
 }

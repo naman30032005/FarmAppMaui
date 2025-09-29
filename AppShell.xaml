@@ -6,7 +6,8 @@
     xmlns:local="clr-namespace:Farm"
     xmlns:views="clr-namespace:Farm.Views"
     Shell.NavBarIsVisible="false"
-    Title="FarmX">
+    Title="FarmX"
+    >
 
     <TabBar>
         <Tab Title="Dashboard">

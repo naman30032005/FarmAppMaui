@@ -1,4 +1,4 @@
-﻿namespace Farm.Utitlity;
+﻿namespace Farm.Utility;
 
 // DBOps Class to Handle Database Operations
 public class DbOps
