@@ -75,8 +75,6 @@ public partial class LivestockPageVM:BaseVM
 
         IsBusy = true;
 
-        IEnumerable<AnimalVM> sorted = animals;
-
         await Task.Run(() =>
         {
             IEnumerable<AnimalVM> sorted = animals;
@@ -97,7 +95,7 @@ public partial class LivestockPageVM:BaseVM
 
                 case "None":
                 default:
-                    sorted = animals; // leave as-is
+                    sorted = animals.OrderBy(a => a.ID);
                     break;
             }
 
