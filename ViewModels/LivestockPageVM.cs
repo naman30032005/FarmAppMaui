@@ -13,11 +13,17 @@ public partial class LivestockPageVM:BaseVM
     [ObservableProperty] private string selectedSortOption;
 
 
+
+    [ObservableProperty] private AnimalVM selectedAnimal;
+    [ObservableProperty] private bool deleteCommandEnabled;
+
+
     public LivestockPageVM(DbOps dbs)
     {
         this._db = dbs;
         SortOptions = new() { "None", "ID", "Weight", "Expense"};
         SelectedSortOption = SortOptions[0];
+        DeleteCommandEnabled = false;
     }
 
     public async Task FillList()
@@ -43,18 +49,35 @@ public partial class LivestockPageVM:BaseVM
     [RelayCommand]
     async Task UpdateAnimal()
     {
-        await Shell.Current.GoToAsync("");
+        await Shell.Current.GoToAsync($"{nameof(UpdateAnimalPage)}", true);
     }
     [RelayCommand]
     async Task DeleteAnimal()
     {
-        await Shell.Current.GoToAsync("");
+        IsBusy = true;
+
+        await Task.Delay(1000);
+
+        await _db.Delete(SelectedAnimal.animal);
+
+        animals.Remove(SelectedAnimal);
+
+        DeleteCommandEnabled = false;
+
+        IsBusy = false;
     }
     [RelayCommand]
     async Task QueryAnimal()
     {
-        await Shell.Current.GoToAsync("");
+        await Shell.Current.GoToAsync($"{nameof(QueryPage)}", true);
     }
+
+
+    partial void OnSelectedAnimalChanged(AnimalVM value)
+    {
+        DeleteCommandEnabled = true;
+    }
+
 
     [RelayCommand]
     async Task ClearFilter()
@@ -78,7 +101,7 @@ public partial class LivestockPageVM:BaseVM
 
         IsBusy = true;
 
-        await Task.Delay(1000);
+        await Task.Delay(1000); // For better UI
 
         await Task.Run(() =>
         {
