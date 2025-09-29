@@ -4,11 +4,12 @@ public partial class AddAnimalPageVM : BaseVM
 {
     private readonly DbOps _dbs;
 
-    [ObservableProperty] private string animalType;
-    [ObservableProperty] private float weight;
+    [ObservableProperty][NotifyPropertyChangedFor(nameof(ProductToDisplay))] private string animalType;
+    [ObservableProperty] private string weight;
     [ObservableProperty] private string color;
-    [ObservableProperty] private float expense;
-    [ObservableProperty] private float milkOrWool;
+    [ObservableProperty] private string expense;
+    [ObservableProperty] private string milkOrWool;
+
 
     public string[] TypeOptions { get => [nameof(Cow), nameof(Sheep)]; } 
     public string ProductToDisplay { get => (AnimalType == nameof(Sheep)) ? "Wool" : "Milk"; }
@@ -28,14 +29,23 @@ public partial class AddAnimalPageVM : BaseVM
     public async Task Save()
     {
 
+        var (isValid, errorMsg, w, e, m, c) = CheckFields();
+
+        if (!isValid)
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", errorMsg, "OK");
+            return;
+        }
+
+
         if (AnimalType == nameof(Sheep))
         {
             Sheep sheep = new()
             {
-                Weight = Weight,
-                Expense = Expense,
-                Colour = Color,
-                Wool = MilkOrWool
+                Weight = w,
+                Expense = e,
+                Colour = c,
+                Wool = m
             };
 
             await _dbs.Insert(sheep);
@@ -44,19 +54,32 @@ public partial class AddAnimalPageVM : BaseVM
         {
             Cow cow = new()
             {
-                Weight = Weight,
-                Expense = Expense,
-                Colour = Color,
-                Milk = MilkOrWool
+                Weight = w,
+                Expense = e,
+                Colour = c,
+                Milk = m
             };
 
             await _dbs.Insert(cow);
         }
     }
 
-    public static bool checkFields()
+    public (bool isValid, string errorMsg, float weight, float expense, float product, string colour) CheckFields()
     {
-        //TO DO : Check the input and convert properly
-        return false;
+        float w = Utils.ConvertInputFloat(Weight);
+        float e = Utils.ConvertInputFloat(Expense);
+        float m = Utils.ConvertInputFloat(MilkOrWool);
+        string c = Utils.ConvertInputColor(Color);
+
+        if (w == float.MinValue)
+            return (false, "Invalid weight entered.", 0, 0, 0, "");
+        if (e == float.MinValue)
+            return (false, "Invalid expense entered.", 0, 0, 0, "");
+        if (m == float.MinValue)
+            return (false, $"Invalid {ProductToDisplay} entered.", 0, 0, 0, "");
+        if (string.IsNullOrWhiteSpace(c))
+            return (false, "Invalid colour entered.", 0, 0, 0, "");
+
+        return (true, string.Empty, w, e, m, c);
     }
 }
