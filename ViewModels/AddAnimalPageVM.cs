@@ -22,8 +22,9 @@ public partial class AddAnimalPageVM : BaseVM
     }
 
     [RelayCommand]
-    public static async Task ReturnToMenu()
+    public async Task ReturnToMenu()
     {
+        ResetFields();
         await Shell.Current.GoToAsync("..");
     }
 
