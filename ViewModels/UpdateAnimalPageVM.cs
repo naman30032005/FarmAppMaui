@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Farm.ViewModels;
 
-namespace Farm.ViewModels
+[QueryProperty("animal", "AnimalVM")]
+public class UpdateAnimalPageVM
 {
-    internal class UpdateAnimalPageVM
-    {
-    }
+    public AnimalVM animal { get; set; }
 }
