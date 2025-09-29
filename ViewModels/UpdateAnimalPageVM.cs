@@ -1,7 +1,13 @@
 ﻿namespace Farm.ViewModels;
 
-[QueryProperty("animal", "AnimalVM")]
-public class UpdateAnimalPageVM
+[QueryProperty("AnimalVM", "AnimalVM")]
+public class UpdateAnimalPageVM:BaseVM
 {
-    public AnimalVM animal { get; set; }
+    private readonly DbOps _db;
+    [ObservableProperty] private AnimalVM animal;
+
+    public UpdateAnimalPageVM(DbOps dbs)
+    {
+        _db = dbs;
+    }
 }

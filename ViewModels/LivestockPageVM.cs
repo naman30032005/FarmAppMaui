@@ -50,7 +50,9 @@ public partial class LivestockPageVM:BaseVM
     async Task UpdateAnimal()
     {
         await Shell.Current.GoToAsync($"{nameof(UpdateAnimalPage)}", true,
-            new Dictionary<string, AnimalVM>(){ "AnimalVM", SelectedAnimal });
+            new Dictionary<string, object>{ 
+                {"animal", SelectedAnimal} 
+            });
     }
     [RelayCommand]
     async Task DeleteAnimal()
