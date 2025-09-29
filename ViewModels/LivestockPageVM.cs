@@ -2,18 +2,24 @@
 
 public partial class LivestockPageVM:BaseVM
 {
+    // For Databse and Items
     private readonly DbOps _db;
     public ObservableCollection<AnimalVM> animals { get; } = new();
 
-    public List<String> SortOptions { get; }
 
+    // For Sorting Categories and Options
+    public List<String> SortOptions { get; }
     [ObservableProperty]
     private string selectedSortOption;
+
+    [ObservableProperty,NotifyPropertyChangedFor(nameof(IsDescending))] private bool isAscending;
+    private bool IsDescending = !;
+
 
     public LivestockPageVM(DbOps dbs)
     {
         this._db = dbs;
-        SortOptions = new() { "None", "ID ⬇️", "ID ⬆️"};
+        SortOptions = new() { "None", "ID", "Weight", "Expense"};
         SelectedSortOption = SortOptions[0];
     }
 
@@ -51,6 +57,12 @@ public partial class LivestockPageVM:BaseVM
     async Task QueryAnimal()
     {
         await Shell.Current.GoToAsync("");
+    }
+
+    [RelayCommand]
+    async Task ClearFilter()
+    {
+        // To Do to implement a clear filter functionality;
     }
 
 }
