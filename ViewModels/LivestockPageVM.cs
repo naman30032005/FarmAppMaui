@@ -66,10 +66,10 @@ public partial class LivestockPageVM:BaseVM
     // For Sorting the List
     partial void OnSelectedSortOptionChanged(string value)
     {
-        ApplySorting();
+        _ = ApplySorting();
     }
 
-    private async void ApplySorting()
+    private async Task ApplySorting()
     {
         if (animals == null || animals.Count == 0) return;
 
