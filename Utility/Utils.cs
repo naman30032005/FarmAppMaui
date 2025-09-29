@@ -20,7 +20,7 @@ public class Utils
         if (value is null) return string.Empty;
         else
         {
-            if (Color.TryParse(value, out Color color)) return color.ToString();
+            if (Color.TryParse(value, out Color color)) return color.AsPaint().ToString();
             else return BAD_Color;
         }
     }
