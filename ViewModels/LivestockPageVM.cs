@@ -9,11 +9,8 @@ public partial class LivestockPageVM:BaseVM
 
     // For Sorting Categories and Options
     public List<String> SortOptions { get; }
-    [ObservableProperty]
-    private string selectedSortOption;
 
-    [ObservableProperty,NotifyPropertyChangedFor(nameof(IsDescending))] private bool isAscending;
-    private bool IsDescending = !;
+    [ObservableProperty] private string selectedSortOption;
 
 
     public LivestockPageVM(DbOps dbs)
@@ -65,4 +62,54 @@ public partial class LivestockPageVM:BaseVM
         // To Do to implement a clear filter functionality;
     }
 
+
+    // For Sorting the List
+    partial void OnSelectedSortOptionChanged(string value)
+    {
+        ApplySorting();
+    }
+
+    private async void ApplySorting()
+    {
+        if (animals == null || animals.Count == 0) return;
+
+        IsBusy = true;
+
+        IEnumerable<AnimalVM> sorted = animals;
+
+        await Task.Run(() =>
+        {
+            IEnumerable<AnimalVM> sorted = animals;
+
+            switch (SelectedSortOption)
+            {
+                case "ID":
+                    sorted = animals.OrderByDescending(a => a.ID);
+                    break;
+
+                case "Weight":
+                    sorted = animals.OrderByDescending(a => a.Weight);
+                    break;
+
+                case "Expense":
+                    sorted = animals.OrderByDescending(a => a.Expense);
+                    break;
+
+                case "None":
+                default:
+                    sorted = animals; // leave as-is
+                    break;
+            }
+
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                var sortedList = sorted.ToList();
+                animals.Clear();
+                foreach (var item in sortedList)
+                    animals.Add(item);
+            });
+        });
+
+        IsBusy = false;
+    }
 }
