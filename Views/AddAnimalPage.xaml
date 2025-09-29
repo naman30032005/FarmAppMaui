@@ -11,11 +11,11 @@
             <Label Text="Select Type: " FontSize="18" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"/>
             <Picker ItemsSource="{Binding TypeOptions}" Grid.Column="1" SelectedItem="{Binding AnimalType}"/>
             <Label Text="Weight (KG):  " FontSize="18" Grid.Column="0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Entry Grid.Column="1" Grid.Row="1" Placeholder="0.0" Keyboard="Numeric"/>
+            <Entry Grid.Column="1" Grid.Row="1" Placeholder="0.0" Keyboard="Numeric" Text="{Binding Weight}"/>
             <Label Text="Colour: " FontSize="18" Grid.Column="0" Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Entry Grid.Column="1" Grid.Row="2" Placeholder="Red"/>
+            <Entry Grid.Column="1" Grid.Row="2" Placeholder="Red" Text="{Binding Color}"/>
             <Label Text="Expense (Per Day): " FontSize="18" Grid.Column="0" Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Entry Grid.Column="1" Grid.Row="3" Placeholder="0.0" Keyboard="Numeric"/>
+            <Entry Grid.Column="1" Grid.Row="3" Placeholder="0.0" Keyboard="Numeric" Text="{Binding Expense}"/>
             <Label Text="{Binding ProductToDisplay}" FontSize="18" Grid.Column="0" Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center"/>
             <Entry Grid.Column="1" Grid.Row="4" Text="{Binding MilkOrWool}" Keyboard="Numeric"/>
         </Grid>
