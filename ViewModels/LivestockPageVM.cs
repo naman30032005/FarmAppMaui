@@ -41,7 +41,7 @@ public partial class LivestockPageVM:BaseVM
     }
 
     [RelayCommand]
-    async Task UpdateAniamal()
+    async Task UpdateAnimal()
     {
         await Shell.Current.GoToAsync("");
     }
@@ -59,7 +59,10 @@ public partial class LivestockPageVM:BaseVM
     [RelayCommand]
     async Task ClearFilter()
     {
-        // To Do to implement a clear filter functionality;
+        IsBusy = true;
+        await FillList();
+        this.SelectedSortOption = "None";
+        IsBusy = false;
     }
 
 
@@ -74,6 +77,8 @@ public partial class LivestockPageVM:BaseVM
         if (animals == null || animals.Count == 0) return;
 
         IsBusy = true;
+
+        await Task.Delay(1000);
 
         await Task.Run(() =>
         {

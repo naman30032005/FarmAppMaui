@@ -60,7 +60,15 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Border>
-        
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}"
+                       IsVisible="{Binding IsBusy}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Grid.ColumnSpan="4"
+                       Grid.Row="1"
+                       Color="Green" />
+
         <Button Text="Add" Grid.Column="0" Grid.Row="2" Command="{Binding AddAnimalCommand}"/>
         <Button Text="Update" Grid.Column="1" Grid.Row="2" Command="{Binding UpdateCommand}"/>
         <Button Text="Delete" Grid.Column="2" Grid.Row="2" Command="{Binding DeleteCommandC}"/>
