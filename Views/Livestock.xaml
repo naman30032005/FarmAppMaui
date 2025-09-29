@@ -16,7 +16,7 @@
     </ContentPage.Resources>
     <Grid RowDefinitions="Auto,*,50,20" ColumnDefinitions="*,*,*,*" RowSpacing="10" ColumnSpacing="20" Padding="30,5">
 
-        <Label Text="Animals in the Farm" FontSize="30" FontAttributes="Bold" Grid.Column="1" HorizontalTextAlignment="Start" Grid.ColumnSpan="2" VerticalOptions="Center"/>
+        <Label Text="Animals in the Farm" FontSize="30" FontAttributes="Bold" Grid.Column="1" HorizontalTextAlignment="Center" Grid.ColumnSpan="2" VerticalOptions="Center"/>
 
         <HorizontalStackLayout VerticalOptions="Center" Grid.Column="3" Spacing="20" Padding="5" HorizontalOptions="End">
             <Label Text="Sort :" VerticalOptions="Center" FontAttributes="Bold"  FontSize="16" HorizontalOptions="Fill"/>
@@ -32,6 +32,7 @@
                         HorizontalOptions="Fill"
                         VerticalOptions="Fill"
                         x:Name="AnimalCollection"
+                        SelectedItem="{Binding SelectedAnimal}"
                         >
                 <CollectionView.Header>
                     <Grid BackgroundColor="Black" ColumnDefinitions="*,*,*,*,*,*" Padding="5">
@@ -72,7 +73,8 @@
 
         <Button Text="Add" Grid.Column="0" Grid.Row="2" Command="{Binding AddAnimalCommand}"/>
         <Button Text="Update" Grid.Column="1" Grid.Row="2" Command="{Binding UpdateAnimalCommand}"/>
-        <Button Text="Delete" Grid.Column="2" Grid.Row="2" Command="{Binding DeleteAnimalCommand}"/>
+        <Button Text="Delete" Grid.Column="2" Grid.Row="2" Command="{Binding DeleteAnimalCommand}"
+                IsEnabled="{Binding DeleteCommandEnabled}"/>
         <Button Text="Filter" Grid.Column="3" Grid.Row="2" Command="{Binding QueryAnimalCommand}"/>
     </Grid>
 </ContentPage>

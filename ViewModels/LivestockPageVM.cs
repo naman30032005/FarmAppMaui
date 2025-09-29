@@ -13,11 +13,17 @@ public partial class LivestockPageVM:BaseVM
     [ObservableProperty] private string selectedSortOption;
 
 
+
+    [ObservableProperty] private AnimalVM selectedAnimal;
+    [ObservableProperty] private bool deleteCommandEnabled;
+
+
     public LivestockPageVM(DbOps dbs)
     {
         this._db = dbs;
         SortOptions = new() { "None", "ID", "Weight", "Expense"};
         SelectedSortOption = SortOptions[0];
+        DeleteCommandEnabled = false;
     }
 
     public async Task FillList()
@@ -48,7 +54,30 @@ public partial class LivestockPageVM:BaseVM
     [RelayCommand]
     async Task DeleteAnimal()
     {
-        await Shell.Current.GoToAsync($"{nameof(DeleteAnimalPage)}", true);
+        if (SelectedAnimal.AnimalType == nameof(Sheep))
+        {
+            Sheep sheep = new()
+            {
+                ID = SelectedAnimal.ID,
+                Weight = SelectedAnimal.Weight,
+                Colour = SelectedAnimal.Colour,
+                Expense = SelectedAnimal.Expense,
+                Wool = SelectedAnimal.Wool
+            };
+            await _db.Delete(sheep);
+        }
+        else
+        {
+            Cow cow = new()
+            {
+                ID = SelectedAnimal.ID,
+                Weight = SelectedAnimal.Weight,
+                Colour = SelectedAnimal.Colour,
+                Expense = SelectedAnimal.Expense,
+                Milk = SelectedAnimal.Milk
+            };
+            await _db.Delete(cow);
+        }
     }
     [RelayCommand]
     async Task QueryAnimal()
@@ -56,6 +85,11 @@ public partial class LivestockPageVM:BaseVM
         await Shell.Current.GoToAsync($"{nameof(QueryPage)}", true);
     }
 
+
+    partial void OnSelectedAnimalChanged(AnimalVM value)
+    {
+        DeleteCommandEnabled = true;
+    }
 
 
     [RelayCommand]
