@@ -16,4 +16,10 @@ public partial class UpdateAnimalPageVM : BaseVM
     {
         await Shell.Current.GoToAsync("..");
     }
+
+    [RelayCommand]
+    async Task Update()
+    {
+
+    }
 }

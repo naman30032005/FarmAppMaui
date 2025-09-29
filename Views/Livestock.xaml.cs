@@ -13,6 +13,7 @@ public partial class Livestock : ContentPage
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
+		viewmodel.DeleteCommandEnabled = false;
 		await viewmodel.FillList();
 	}
 
