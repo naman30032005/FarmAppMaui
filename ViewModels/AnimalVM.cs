@@ -3,7 +3,7 @@
 // Animal Vm For Auto Updating the Observable Collection When an animal is updated
 public partial class AnimalVM : ObservableObject
 {
-    private readonly Animal animal;
+    public Animal animal { get; set; }
 
     public AnimalVM(Animal animal)
     {

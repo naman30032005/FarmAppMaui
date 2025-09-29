@@ -54,30 +54,17 @@ public partial class LivestockPageVM:BaseVM
     [RelayCommand]
     async Task DeleteAnimal()
     {
-        if (SelectedAnimal.AnimalType == nameof(Sheep))
-        {
-            Sheep sheep = new()
-            {
-                ID = SelectedAnimal.ID,
-                Weight = SelectedAnimal.Weight,
-                Colour = SelectedAnimal.Colour,
-                Expense = SelectedAnimal.Expense,
-                Wool = SelectedAnimal.Wool
-            };
-            await _db.Delete(sheep);
-        }
-        else
-        {
-            Cow cow = new()
-            {
-                ID = SelectedAnimal.ID,
-                Weight = SelectedAnimal.Weight,
-                Colour = SelectedAnimal.Colour,
-                Expense = SelectedAnimal.Expense,
-                Milk = SelectedAnimal.Milk
-            };
-            await _db.Delete(cow);
-        }
+        IsBusy = true;
+
+        await Task.Delay(1000);
+
+        await _db.Delete(SelectedAnimal.animal);
+
+        animals.Remove(SelectedAnimal);
+
+        DeleteCommandEnabled = true;
+
+        IsBusy = false;
     }
     [RelayCommand]
     async Task QueryAnimal()
