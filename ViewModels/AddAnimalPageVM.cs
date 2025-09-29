@@ -43,7 +43,7 @@ public partial class AddAnimalPageVM : BaseVM
         {
             Sheep sheep = new()
             {
-                Weight = w,
+                Weight = w, 
                 Expense = e,
                 Colour = c,
                 Wool = m
