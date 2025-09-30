@@ -13,12 +13,12 @@ public partial class Livestock : ContentPage
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
-		viewmodel.DeleteCommandEnabled = false;
 		await viewmodel.FillList();
 	}
 
-    protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
-        base.OnNavigatedFrom(args);
-    }  
+        base.OnNavigatedTo(args);
+        viewmodel.DeleteCommandEnabled = false;
+    }
 }

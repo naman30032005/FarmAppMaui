@@ -16,6 +16,7 @@ public partial class LivestockPageVM:BaseVM
 
     [ObservableProperty] private AnimalVM selectedAnimal;
     [ObservableProperty] private bool deleteCommandEnabled;
+    [ObservableProperty] private bool updateCommandEnabled;
 
 
     public LivestockPageVM(DbOps dbs)
@@ -24,6 +25,7 @@ public partial class LivestockPageVM:BaseVM
         SortOptions = new() { "None", "ID", "Weight", "Expense"};
         SelectedSortOption = SortOptions[0];
         DeleteCommandEnabled = false;
+        UpdateCommandEnabled = false;
     }
 
     public async Task FillList()

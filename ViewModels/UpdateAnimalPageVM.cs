@@ -5,6 +5,7 @@ public partial class UpdateAnimalPageVM : BaseVM
 {
     private readonly DbOps _db;
     [ObservableProperty] private AnimalVM animal;
+    public string MilkOrWool { get => (Animal.AnimalType == nameof(Cow) ? "Milk" : "Wool"); }
 
     public UpdateAnimalPageVM(DbOps dbs)
     {
