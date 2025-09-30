@@ -17,6 +17,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<LivestockPageVM>();
         builder.Services.AddSingleton<Livestock>();
         builder.Services.AddSingleton<AddAnimalPageVM>();
+        builder.Services.AddTransient<UpdateAnimalPageVM>();
+        builder.Services.AddTransient<UpdateAnimalPage>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

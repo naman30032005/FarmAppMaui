@@ -16,6 +16,7 @@ public partial class LivestockPageVM:BaseVM
 
     [ObservableProperty] private AnimalVM selectedAnimal;
     [ObservableProperty] private bool deleteCommandEnabled;
+    [ObservableProperty] private bool updateCommandEnabled;
 
 
     public LivestockPageVM(DbOps dbs)
@@ -24,6 +25,7 @@ public partial class LivestockPageVM:BaseVM
         SortOptions = new() { "None", "ID", "Weight", "Expense"};
         SelectedSortOption = SortOptions[0];
         DeleteCommandEnabled = false;
+        UpdateCommandEnabled = false;
     }
 
     public async Task FillList()
@@ -49,7 +51,10 @@ public partial class LivestockPageVM:BaseVM
     [RelayCommand]
     async Task UpdateAnimal()
     {
-        await Shell.Current.GoToAsync($"{nameof(UpdateAnimalPage)}", true);
+        await Shell.Current.GoToAsync($"{nameof(UpdateAnimalPage)}", true,
+            new Dictionary<string, object>{ 
+                {"AnimalVM", SelectedAnimal} 
+            });
     }
     [RelayCommand]
     async Task DeleteAnimal()
@@ -61,6 +66,8 @@ public partial class LivestockPageVM:BaseVM
         await _db.Delete(SelectedAnimal.animal);
 
         animals.Remove(SelectedAnimal);
+
+        UpdateCommandEnabled = false;
 
         DeleteCommandEnabled = false;
 
@@ -76,6 +83,7 @@ public partial class LivestockPageVM:BaseVM
     partial void OnSelectedAnimalChanged(AnimalVM value)
     {
         DeleteCommandEnabled = true;
+        UpdateCommandEnabled = true;
     }
 
 

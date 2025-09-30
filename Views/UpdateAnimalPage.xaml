@@ -2,12 +2,27 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Farm.Views.UpdateAnimalPage"
+             xmlns:viewmodel="clr-namespace:Farm.ViewModels"
+             x:DataType="viewmodel:UpdateAnimalPageVM"
              Shell.PresentationMode="ModalAnimated"
              Title="UpdateAnimalPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid ColumnDefinitions="50,*,*,50" RowDefinitions="50,*,50,20" ColumnSpacing="20" RowSpacing="10">
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="20">
+            <Label Text="ID: " FontSize="18" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry IsEnabled="False" Text="{Binding Animal.ID}" Grid.Column="1" FontSize="18" TextColor="Grey"/>
+            <Label Text="Type: " FontSize="18" Grid.Column="0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry IsEnabled="False" Text="{Binding Animal.AnimalType}" Grid.Column="1" FontSize="18" TextColor="Grey" Grid.Row="1"/>
+            <Label Text="Weight: " FontSize="18" Grid.Column="0" Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry Text="{Binding Animal.Weight}" Grid.Column="1" FontSize="18" TextColor="White" Grid.Row="2"/>
+            <Label Text="Colour: " FontSize="18" Grid.Column="0" Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry Text="{Binding Animal.Colour}" Grid.Column="1" FontSize="18" TextColor="White" Grid.Row="3"/>
+            <Label Text="Expense" FontSize="18" Grid.Column="0" Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry Text="{Binding Animal.Expense}" Grid.Column="1" FontSize="18" TextColor="White" Grid.Row="4"/>
+            <Label Text="{Binding MilkOrWool}" FontSize="18" Grid.Column="0" Grid.Row="5" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry Text="{Binding Animal.MilkOrWoolValue}" Grid.Column="1" FontSize="18" TextColor="White" Grid.Row="5"/>
+        </Grid>
+        
+        <Button Grid.Column="1" Grid.Row="2" Text="Return" Command="{Binding ReturnToMenuCommand}"/>
+        <Button Grid.Column="2" Grid.Row="2" Text="Save" Command="{Binding UpdateCommand}"/>
+    </Grid>
 </ContentPage>

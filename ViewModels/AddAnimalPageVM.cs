@@ -73,7 +73,7 @@ public partial class AddAnimalPageVM : BaseVM
         ResetFields();
     }
 
-    public (bool isValid, string errorMsg, float weight, float expense, float product, string colour) CheckFields()
+    private (bool isValid, string errorMsg, float weight, float expense, float product, string colour) CheckFields()
     {
         float w = Utils.ConvertInputFloat(Weight);
         float e = Utils.ConvertInputFloat(Expense);
