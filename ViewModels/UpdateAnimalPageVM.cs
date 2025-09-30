@@ -27,5 +27,41 @@ public partial class UpdateAnimalPageVM : BaseVM
     async Task Update()
     {
 
+        var (isValid, errorMsg) = CheckFields();
+
+        if (!isValid)
+        {
+            await Shell.Current.DisplayAlert("Error", errorMsg, "OK");
+            return;
+        }
+
+        IsBusy = true;
+
+        await _db.Update(Animal.animal);
+
+        IsBusy = false;
+
+        await ReturnToMenu();
+    }
+
+    private (bool isValid, string message) CheckFields()
+    {
+        float w = Utils.ConvertInputFloat(Animal.Weight.ToString());
+        float e = Utils.ConvertInputFloat(Animal.Expense.ToString());
+        float morw;
+        if (MilkOrWool == "Milk") morw = Utils.ConvertInputFloat(Animal.Milk.ToString());
+        else morw = Utils.ConvertInputFloat(Animal.Wool.ToString());
+        string c = Utils.ConvertInputColor(Animal.Colour);
+
+        if (w == float.MinValue)
+            return (false, "Invalid weight entered.");
+        if (e == float.MinValue)
+            return (false, "Invalid expense entered.");
+        if (morw == float.MinValue)
+            return (false, $"Invalid {MilkOrWool} value entered.");
+        if (string.IsNullOrEmpty(c))
+            return (false, "Invalid colour entered.");
+
+        return (true,string.Empty);
     }
 }
