@@ -6,9 +6,15 @@
              x:DataType="viewmodel:QueryPageVM"
              Shell.PresentationMode="ModalAnimated"
              Title="QueryPage">
-    <Grid ColumnDefinitions="50,*,*,50" RowDefinitions="50,*,50,50" RowSpacing="20" ColumnSpacing="50">
-        <Grid></Grid>
+    <Grid ColumnDefinitions="50,*,*,*,50" RowDefinitions="50,*,50,50" RowSpacing="20" ColumnSpacing="50">
+        <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+            <Label Text="Select Type: " FontSize="18" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Picker SelectedItem="{Binding SelectedType}" ItemsSource="{Binding Types}" Grid.Row="0" Grid.Column="1"
+                />
+        </Grid>
 
-        <Button Text="Back" Grid.Row="2" Grid.Column="1" Command="{Binding Ret}"/>
+        <Button Text="Back" Grid.Row="2" Grid.Column="1" Command="{Binding ReturnToMenuCommand}"/>
+        <Button Text="Apply" Grid.Row="2" Grid.Column="2" Command="{Binding ApplyCommand}"/>
+        <Button Text="View Statistics" Grid.Row="2" Grid.Column="3" Command="{Binding StatisticsCommand}"/>
     </Grid>
 </ContentPage>

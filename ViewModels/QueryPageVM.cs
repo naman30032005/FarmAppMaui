@@ -10,13 +10,36 @@ public partial class QueryPageVM: BaseVM
     [ObservableProperty] private string color;
     [ObservableProperty] private string minproduct;
     [ObservableProperty] private string maxproduct;
-    public string MilkOrWool { get => (SelectedType == nameof(Cow) ? "Milk" : "Wool"); }
+    public string MilkOrWool { get => (SelectedType == "All") ? "Product" : (SelectedType == nameof(Cow) ? "Milk" : "Wool"); }
 
-    public List<string> Types = ["All",nameof(Cow), nameof(Sheep)];
+    public List<string> Types { get; set; }
+
+    private ObservableCollection<AnimalVM> animals;
+
+    public QueryPageVM(LivestockPageVM vm)
+    {
+        Types = ["All", nameof(Cow), nameof(Sheep)];
+        SelectedType = Types[0];
+        animals = vm.animals;
+    }
 
     [RelayCommand]
     async Task ReturnToMenu()
     {
-        await Shell.Current.GoToAsync("..",true);
+        IsBusy = true;
+        await Shell.Current.GoToAsync("..");
+        IsBusy = false;
+    }
+
+    [RelayCommand]
+    async Task Apply()
+    {
+        return;
+    }
+
+    [RelayCommand]
+    async Task Statistics()
+    {
+        return;
     }
 }
