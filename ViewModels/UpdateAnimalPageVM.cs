@@ -5,11 +5,16 @@ public partial class UpdateAnimalPageVM : BaseVM
 {
     private readonly DbOps _db;
     [ObservableProperty] private AnimalVM animal;
-    public string MilkOrWool { get => (Animal.AnimalType == nameof(Cow) ? "Milk" : "Wool"); }
+    [ObservableProperty] private string milkOrWool;
 
     public UpdateAnimalPageVM(DbOps dbs)
     {
         _db = dbs;
+    }
+
+    partial void OnAnimalChanged(AnimalVM value)
+    {
+        MilkOrWool = (Animal.AnimalType == nameof(Cow) ? "Milk" : "Wool");
     }
 
     [RelayCommand]

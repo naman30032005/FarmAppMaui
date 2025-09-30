@@ -20,5 +20,6 @@ public partial class Livestock : ContentPage
     {
         base.OnNavigatedTo(args);
         viewmodel.DeleteCommandEnabled = false;
+		viewmodel.UpdateCommandEnabled = false;
     }
 }

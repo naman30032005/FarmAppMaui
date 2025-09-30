@@ -67,6 +67,8 @@ public partial class LivestockPageVM:BaseVM
 
         animals.Remove(SelectedAnimal);
 
+        UpdateCommandEnabled = false;
+
         DeleteCommandEnabled = false;
 
         IsBusy = false;
@@ -81,6 +83,7 @@ public partial class LivestockPageVM:BaseVM
     partial void OnSelectedAnimalChanged(AnimalVM value)
     {
         DeleteCommandEnabled = true;
+        UpdateCommandEnabled = true;
     }
 
 
