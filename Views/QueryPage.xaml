@@ -2,12 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Farm.Views.QueryPage"
+             xmlns:viewmodel="clr-namespace:Farm.ViewModels"
+             x:DataType="viewmodel:QueryPageVM"
              Shell.PresentationMode="ModalAnimated"
              Title="QueryPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid ColumnDefinitions="50,*,*,50" RowDefinitions="50,*,50,50" RowSpacing="20" ColumnSpacing="50">
+        <Grid></Grid>
+
+        <Button Text="Back" Grid.Row="2" Grid.Column="1" Command="{Binding Ret}"/>
+    </Grid>
 </ContentPage>

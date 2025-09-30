@@ -9,11 +9,10 @@ public partial class LivestockPageVM:BaseVM
 
     // For Sorting Categories and Options
     public List<String> SortOptions { get; }
-
     [ObservableProperty] private string selectedSortOption;
 
 
-
+    // For Deleting and Updating mechanism
     [ObservableProperty] private AnimalVM selectedAnimal;
     [ObservableProperty] private bool deleteCommandEnabled;
     [ObservableProperty] private bool updateCommandEnabled;
@@ -73,12 +72,12 @@ public partial class LivestockPageVM:BaseVM
 
         IsBusy = false;
     }
+
     [RelayCommand]
     async Task QueryAnimal()
     {
         await Shell.Current.GoToAsync($"{nameof(QueryPage)}", true);
     }
-
 
     partial void OnSelectedAnimalChanged(AnimalVM value)
     {
