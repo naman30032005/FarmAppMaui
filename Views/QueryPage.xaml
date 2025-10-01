@@ -7,8 +7,40 @@
              Shell.PresentationMode="ModalAnimated"
              Title="QueryPage">
     <Grid ColumnDefinitions="50,*,*,50" RowDefinitions="50,*,50,50" RowSpacing="20" ColumnSpacing="50">
-        <Grid></Grid>
+        <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="20">
+            <Label Text="Select Type: " FontSize="18" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Picker SelectedItem="{Binding SelectedType}" SelectedIndex="0" ItemsSource="{Binding Types}" Grid.Row="0" Grid.Column="1"/> 
 
-        <Button Text="Back" Grid.Row="2" Grid.Column="1" Command="{Binding Ret}"/>
+            <Label Text="Weight: " FontSize="18" Grid.Column="0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <HorizontalStackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" Spacing="20">
+                <Label Text="Min" FontSize="18" VerticalOptions="Center" HorizontalOptions="Fill"/>
+                <Entry Text="{Binding MinWeight}" HorizontalOptions="Fill" VerticalOptions="Center" MinimumWidthRequest="90" Keyboard="Numeric"/>
+                <Label Text="Max" FontSize="18" VerticalOptions="Center" HorizontalOptions="Fill"/>
+                <Entry Text="{Binding MaxWeight}" HorizontalOptions="Fill" VerticalOptions="Center" MinimumWidthRequest="90" Keyboard="Numeric"/>
+            </HorizontalStackLayout>
+            
+            <Label Text="Colour: " FontSize="18" Grid.Column="0" Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Color}"/>
+
+            <Label Text="Expense: " FontSize="18" Grid.Column="0" Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <HorizontalStackLayout Grid.Row="3" Grid.Column="1" HorizontalOptions="Fill" Spacing="20">
+                <Label Text="Min" FontSize="18" VerticalOptions="Center" HorizontalOptions="Fill"/>
+                <Entry Text="{Binding MinExpense}" HorizontalOptions="Fill" VerticalOptions="Center" MinimumWidthRequest="90" Keyboard="Numeric"/>
+                <Label Text="Max" FontSize="18" VerticalOptions="Center" HorizontalOptions="Fill"/>
+                <Entry Text="{Binding MaxExpense}" HorizontalOptions="Fill" VerticalOptions="Center" MinimumWidthRequest="90" Keyboard="Numeric"/>
+            </HorizontalStackLayout>
+            
+            <Label Text="{Binding MilkOrWool, StringFormat='{0}: '}" FontSize="18" Grid.Column="0" Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <HorizontalStackLayout Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" Spacing="20">
+                <Label Text="Min" FontSize="18" VerticalOptions="Center" HorizontalOptions="Fill"/>
+                <Entry Text="{Binding Minproduct}" HorizontalOptions="Fill" MinimumWidthRequest="90" VerticalOptions="Center" Keyboard="Numeric"/>
+                <Label Text="Max" FontSize="18" VerticalOptions="Center" HorizontalOptions="Fill"/>
+                <Entry Text="{Binding Maxproduct}" HorizontalOptions="Fill" VerticalOptions="Center" MinimumWidthRequest="90" Keyboard="Numeric"/>
+            </HorizontalStackLayout>
+
+        </Grid>
+
+        <Button Text="Back" Grid.Row="2" Grid.Column="1" Command="{Binding ReturnToMenuCommand}"/>
+        <Button Text="View Statistics" Grid.Row="2" Grid.Column="2" Command="{Binding StatisticsCommand}"/>
     </Grid>
 </ContentPage>

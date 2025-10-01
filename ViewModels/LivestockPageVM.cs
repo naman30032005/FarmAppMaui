@@ -6,7 +6,6 @@ public partial class LivestockPageVM:BaseVM
     private readonly DbOps _db;
     public ObservableCollection<AnimalVM> animals { get; } = new();
 
-
     // For Sorting Categories and Options
     public List<String> SortOptions { get; }
     [ObservableProperty] private string selectedSortOption;
@@ -37,7 +36,7 @@ public partial class LivestockPageVM:BaseVM
         var animalList = await _db.ReadDataAsync();
         foreach (var animal in animalList)
             animals.Add(new AnimalVM(animal));
-
+        
         IsBusy = false;
     }
 
