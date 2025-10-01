@@ -42,7 +42,7 @@ public partial class QueryPageVM: BaseVM
         double percentage = (totalCount > 0) ? (count * 100.0 / totalCount) : 0;
         double avgWeight = filteredList.Any() ? filteredList.Average(x => x.Weight) : 0;
 
-        double dailyTax = filteredList.Sum(x => x.Weight * 0.02f);
+        double dailyTax = filteredList.Sum(x => x.Weight * Calculator.GovernmentTax);
 
         double profitOrLoss = Calculator.IncomePerDay(filteredList) - Calculator.ExpensePerDay(filteredList);
 
@@ -60,6 +60,10 @@ public partial class QueryPageVM: BaseVM
             $"{profitOrLossToDisplay}:  {profitOrLoss:F1}$\n" + 
             $"Average Weight:  {avgWeight:F1}KG\n" + 
             $"Produce Amount:  {produce:F1}KG";
+
+        System.Diagnostics.Debug.WriteLine($"Income: {Calculator.IncomePerDay(filteredList)}");
+        System.Diagnostics.Debug.WriteLine($"Expenses: {Calculator.ExpensePerDay(filteredList)}");
+        System.Diagnostics.Debug.WriteLine($"Profit/Loss: {profitOrLoss}");
 
         await Shell.Current.DisplayAlert(
             "Statistics",

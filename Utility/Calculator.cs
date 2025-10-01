@@ -7,20 +7,12 @@ public class Calculator
     public static float GovernmentTax { get; private set; }
 
     // null constructor with default values
-    public Calculator()
+    static Calculator()
     {
         // al the given values are per kg
         MilkSellingPrice = 9.4f;
         WoolSellingPrice = 6.2f;
         GovernmentTax = 0.02f; 
-    }
-
-    // value constructore
-    public Calculator(float MilkSellingPrice, float WoolSellingPrice, float GovernmentTax)
-    {
-        Calculator.MilkSellingPrice = MilkSellingPrice;
-        Calculator.WoolSellingPrice = WoolSellingPrice;
-        Calculator.GovernmentTax = GovernmentTax;
     }
 
     public static void UpdatePrice(float MilkSellingPrice, float WoolSellingPrice, float GovernmentTax)
@@ -54,6 +46,6 @@ public class Calculator
             totalWeight += animal.Weight;
         }
 
-        return totalExpense + totalWeight * 0.02f;
+        return totalExpense + totalWeight * GovernmentTax;
     }
 }
