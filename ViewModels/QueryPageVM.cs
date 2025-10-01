@@ -139,7 +139,6 @@ public partial class QueryPageVM: BaseVM
 
                 filtered = filtered.Where(x => x.Weight <= maxP);
             }
-
         });
     }
 }
