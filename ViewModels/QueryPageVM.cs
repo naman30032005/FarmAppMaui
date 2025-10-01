@@ -37,13 +37,33 @@ public partial class QueryPageVM: BaseVM
         var filteredList = GetFilteredAnimals().ToList();
 
         int count = filteredList.Count;
+        int totalCount = animals.Count;
+
+        double percentage = (totalCount > 0) ? (count * 100.0 / totalCount) : 0;
         double avgWeight = filteredList.Any() ? filteredList.Average(x => x.Weight) : 0;
-        
+
+        double dailyTax = filteredList.Sum(x => x.Weight * 0.02f);
+
+        double profitOrLoss = Calculator.IncomePerDay(filteredList) - Calculator.ExpensePerDay(filteredList);
+
+        string profitOrLossToDisplay = (profitOrLoss > 0)?"Profit":"Loss";
+
+
+        double produce = filteredList.Sum(x =>
+           x.AnimalType == nameof(Cow) ? x.Milk :
+           (x.AnimalType == nameof(Sheep) ? x.Wool : 0));
+
+
+        string message = $"Number of Livestocks: {count}\n" +
+            $"Percentage of selected Livestock: {percentage}\n" + 
+            $"Daily Tax: {dailyTax}\n" +
+            $"{profitOrLossToDisplay}: {profitOrLoss}\n" + 
+            $"Average Weight: {avgWeight}\n" + 
+            $"Produce Amount: {produce}";
 
         await Shell.Current.DisplayAlert(
             "Statistics",
-            $"Number Of Livestock: {count}\n" +
-            $"Avg Weight: {avgWeight:F2}\n",
+            message,
             "OK");
     }
 

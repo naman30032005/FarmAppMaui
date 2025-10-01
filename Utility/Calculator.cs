@@ -31,24 +31,24 @@ public class Calculator
     }
 
     // takes the list of all the animals and calculates different amounts to return the total income per day
-    public float IncomePerDay(List<Animal> animals)
+    public float IncomePerDay(List<AnimalVM> animals)
     {
         int cCount = 0, sCount = 0;
-        foreach (Animal animal in animals)
+        foreach (var animal in animals)
         {
-            if (animal.GetType().Name == "Cow") cCount++;
-            else if (animal.GetType().Name == "Sheep") sCount++;
+            if (animal.AnimalType == nameof(Cow)) cCount++;
+            else if (animal.AnimalType == nameof(Sheep)) sCount++;
         }
 
         return cCount * MilkSellingPrice + sCount * WoolSellingPrice;
     }
 
     // takes the list of the animals to calculate different amounts and return the total expenses per day
-    public float ExpensePerDay(List<Animal> animals)
+    public float ExpensePerDay(List<AnimalVM> animals)
     {
         float totalExpense = 0;
         float totalWeight = 0;
-        foreach(Animal animal in animals)
+        foreach(var animal in animals)
         {
             totalExpense += animal.Expense;
             totalWeight += animal.Weight;
