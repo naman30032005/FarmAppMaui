@@ -98,7 +98,7 @@ public partial class QueryPageVM: BaseVM
                     return;
                 }
 
-                filtered = filtered.Where(x => x.Weight >= minE);
+                filtered = filtered.Where(x => x.Expense >= minE);
             }
 
             if (!string.IsNullOrEmpty(MaxExpense))
@@ -111,7 +111,7 @@ public partial class QueryPageVM: BaseVM
                     return;
                 }
 
-                filtered = filtered.Where(x => x.Weight <= maxE);
+                filtered = filtered.Where(x => x.Expense <= maxE);
             }
             
             if (!string.IsNullOrEmpty(Minproduct))
@@ -124,7 +124,11 @@ public partial class QueryPageVM: BaseVM
                     return;
                 }
 
-                filtered = filtered.Where(x => x.Weight >= minP);
+                if (SelectedType == nameof(Cow)) filtered = filtered.Where(x => x.Milk >= minP);
+                else if (SelectedType == nameof(Sheep)) filtered = filtered.Where(x => x.Wool >= minP);
+                else filtered = filtered.Where(x =>
+                    (x.AnimalType == nameof(Cow) && x.Milk >= minP) ||
+                    (x.AnimalType == nameof(Sheep) && x.Wool >= minP));
             }
             
             if (!string.IsNullOrEmpty(Maxproduct))
@@ -137,7 +141,11 @@ public partial class QueryPageVM: BaseVM
                     return;
                 }
 
-                filtered = filtered.Where(x => x.Weight <= maxP);
+                if (SelectedType == nameof(Cow)) filtered = filtered.Where(x => x.Milk <= maxP);
+                else if (SelectedType == nameof(Sheep)) filtered = filtered.Where(x => x.Wool <= maxP);
+                else filtered = filtered.Where(x =>
+                    (x.AnimalType == nameof(Cow) && x.Milk <= maxP) ||
+                    (x.AnimalType == nameof(Sheep) && x.Wool <= maxP));
             }
         });
     }
