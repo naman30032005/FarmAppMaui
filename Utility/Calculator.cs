@@ -33,11 +33,11 @@ public class Calculator
     // takes the list of all the animals and calculates different amounts to return the total income per day
     public static float IncomePerDay(List<AnimalVM> animals)
     {
-        int cCount = 0, sCount = 0;
+        float cCount = 0, sCount = 0;
         foreach (var animal in animals)
         {
-            if (animal.AnimalType == nameof(Cow)) cCount++;
-            else if (animal.AnimalType == nameof(Sheep)) sCount++;
+            if (animal.AnimalType == nameof(Cow)) cCount+= animal.Milk;
+            else if (animal.AnimalType == nameof(Sheep)) sCount+= animal.Wool;
         }
 
         return cCount * MilkSellingPrice + sCount * WoolSellingPrice;
