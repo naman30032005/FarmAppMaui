@@ -40,6 +40,106 @@ public partial class QueryPageVM: BaseVM
     [RelayCommand]
     async Task Statistics()
     {
-        return;
+        await Task.Run(() =>
+        {
+            IEnumerable<AnimalVM> filtered = animals;
+
+            if (!string.IsNullOrEmpty(SelectedType) && !(SelectedType == "All"))
+            {
+                filtered = filtered.Where(x => x.AnimalType == SelectedType);
+            }
+
+            if (!string.IsNullOrEmpty(MinWeight))
+            {
+                float minW = Utils.ConvertInputFloat(MinWeight);
+
+                if (minW == Double.MinValue)
+                {
+                    Shell.Current.DisplayAlert("Error", "The Min Weight Field is Incorrectly added","Ok");
+                    return;
+                }
+
+                filtered = filtered.Where(x => x.Weight >= minW);
+            }
+            
+            if (!string.IsNullOrEmpty(MaxWeight))
+            {
+                float maxW = Utils.ConvertInputFloat(MaxWeight);
+
+                if (maxW == Double.MinValue)
+                {
+                    Shell.Current.DisplayAlert("Error", "The Max Weight Field is Incorrectly added","Ok");
+                    return;
+                }
+
+                filtered = filtered.Where(x => x.Weight <= maxW);
+            }
+            
+            if (!string.IsNullOrEmpty(Color))
+            {
+                string col = Utils.ConvertInputColor(Color);
+
+                if (col == string.Empty)
+                {
+                    Shell.Current.DisplayAlert("Error", "The Colour Field is Incorrectly added","Ok");
+                    return;
+                }
+
+                filtered = filtered.Where(x => x.Colour == col);
+            }
+
+            if (!string.IsNullOrEmpty(MinExpense))
+            {
+                float minE = Utils.ConvertInputFloat(MinExpense);
+
+                if (minE == Double.MinValue)
+                {
+                    Shell.Current.DisplayAlert("Error", "The Min Expense Field is Incorrectly added", "Ok");
+                    return;
+                }
+
+                filtered = filtered.Where(x => x.Weight >= minE);
+            }
+
+            if (!string.IsNullOrEmpty(MaxExpense))
+            {
+                float maxE = Utils.ConvertInputFloat(MaxExpense);
+
+                if (maxE == Double.MinValue)
+                {
+                    Shell.Current.DisplayAlert("Error", "The Max Expense Field is Incorrectly added","Ok");
+                    return;
+                }
+
+                filtered = filtered.Where(x => x.Weight <= maxE);
+            }
+            
+            if (!string.IsNullOrEmpty(Minproduct))
+            {
+                float minP = Utils.ConvertInputFloat(Minproduct);
+
+                if (minP == Double.MinValue)
+                {
+                    Shell.Current.DisplayAlert("Error", $"The Min {MilkOrWool} Field is Incorrectly added","Ok");
+                    return;
+                }
+
+                filtered = filtered.Where(x => x.Weight >= minP);
+            }
+            
+            if (!string.IsNullOrEmpty(Maxproduct))
+            {
+                float maxP = Utils.ConvertInputFloat(Maxproduct);
+
+                if (maxP == Double.MinValue)
+                {
+                    Shell.Current.DisplayAlert("Error", $"The Max {MilkOrWool} Field is Incorrectly added","Ok");
+                    return;
+                }
+
+                filtered = filtered.Where(x => x.Weight <= maxP);
+            }
+
+        });
     }
 }
