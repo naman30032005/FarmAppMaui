@@ -32,121 +32,89 @@ public partial class QueryPageVM: BaseVM
     }
 
     [RelayCommand]
-    async Task Apply()
-    {
-        return;
-    }
-
-    [RelayCommand]
     async Task Statistics()
     {
-        await Task.Run(() =>
+        var filteredList = GetFilteredAnimals().ToList();
+
+        int count = filteredList.Count;
+        double avgWeight = filteredList.Any() ? filteredList.Average(x => x.Weight) : 0;
+        
+
+        await Shell.Current.DisplayAlert(
+            "Statistics",
+            $"Number Of Livestock: {count}\n" +
+            $"Avg Weight: {avgWeight:F2}\n",
+            "OK");
+    }
+
+    private IEnumerable<AnimalVM> GetFilteredAnimals()
+    {
+        IEnumerable<AnimalVM> filtered = animals;
+
+        if (!string.IsNullOrEmpty(SelectedType) && !(SelectedType == "All"))
+            filtered = filtered.Where(x => x.AnimalType == SelectedType);
+
+        if (!string.IsNullOrEmpty(MinWeight))
         {
-            IEnumerable<AnimalVM> filtered = animals;
-
-            if (!string.IsNullOrEmpty(SelectedType) && !(SelectedType == "All"))
-            {
-                filtered = filtered.Where(x => x.AnimalType == SelectedType);
-            }
-
-            if (!string.IsNullOrEmpty(MinWeight))
-            {
-                float minW = Utils.ConvertInputFloat(MinWeight);
-
-                if (minW == Double.MinValue)
-                {
-                    Shell.Current.DisplayAlert("Error", "The Min Weight Field is Incorrectly added","Ok");
-                    return;
-                }
-
+            float minW = Utils.ConvertInputFloat(MinWeight);
+            if (minW != double.MinValue)
                 filtered = filtered.Where(x => x.Weight >= minW);
-            }
-            
-            if (!string.IsNullOrEmpty(MaxWeight))
-            {
-                float maxW = Utils.ConvertInputFloat(MaxWeight);
+        }
 
-                if (maxW == Double.MinValue)
-                {
-                    Shell.Current.DisplayAlert("Error", "The Max Weight Field is Incorrectly added","Ok");
-                    return;
-                }
-
+        if (!string.IsNullOrEmpty(MaxWeight))
+        {
+            float maxW = Utils.ConvertInputFloat(MaxWeight);
+            if (maxW != double.MinValue)
                 filtered = filtered.Where(x => x.Weight <= maxW);
-            }
-            
-            if (!string.IsNullOrEmpty(Color))
-            {
-                string col = Utils.ConvertInputColor(Color);
+        }
 
-                if (col == string.Empty)
-                {
-                    Shell.Current.DisplayAlert("Error", "The Colour Field is Incorrectly added","Ok");
-                    return;
-                }
-
+        if (!string.IsNullOrEmpty(Color))
+        {
+            string col = Utils.ConvertInputColor(Color);
+            if (!string.IsNullOrEmpty(col))
                 filtered = filtered.Where(x => x.Colour == col);
-            }
+        }
 
-            if (!string.IsNullOrEmpty(MinExpense))
-            {
-                float minE = Utils.ConvertInputFloat(MinExpense);
-
-                if (minE == Double.MinValue)
-                {
-                    Shell.Current.DisplayAlert("Error", "The Min Expense Field is Incorrectly added", "Ok");
-                    return;
-                }
-
+        if (!string.IsNullOrEmpty(MinExpense))
+        {
+            float minE = Utils.ConvertInputFloat(MinExpense);
+            if (minE != double.MinValue)
                 filtered = filtered.Where(x => x.Expense >= minE);
-            }
+        }
 
-            if (!string.IsNullOrEmpty(MaxExpense))
-            {
-                float maxE = Utils.ConvertInputFloat(MaxExpense);
-
-                if (maxE == Double.MinValue)
-                {
-                    Shell.Current.DisplayAlert("Error", "The Max Expense Field is Incorrectly added","Ok");
-                    return;
-                }
-
+        if (!string.IsNullOrEmpty(MaxExpense))
+        {
+            float maxE = Utils.ConvertInputFloat(MaxExpense);
+            if (maxE != double.MinValue)
                 filtered = filtered.Where(x => x.Expense <= maxE);
-            }
-            
-            if (!string.IsNullOrEmpty(Minproduct))
+        }
+
+        if (!string.IsNullOrEmpty(Minproduct))
+        {
+            float minP = Utils.ConvertInputFloat(Minproduct);
+            if (minP != double.MinValue)
             {
-                float minP = Utils.ConvertInputFloat(Minproduct);
-
-                if (minP == Double.MinValue)
-                {
-                    Shell.Current.DisplayAlert("Error", $"The Min {MilkOrWool} Field is Incorrectly added","Ok");
-                    return;
-                }
-
                 if (SelectedType == nameof(Cow)) filtered = filtered.Where(x => x.Milk >= minP);
                 else if (SelectedType == nameof(Sheep)) filtered = filtered.Where(x => x.Wool >= minP);
                 else filtered = filtered.Where(x =>
                     (x.AnimalType == nameof(Cow) && x.Milk >= minP) ||
                     (x.AnimalType == nameof(Sheep) && x.Wool >= minP));
             }
-            
-            if (!string.IsNullOrEmpty(Maxproduct))
+        }
+
+        if (!string.IsNullOrEmpty(Maxproduct))
+        {
+            float maxP = Utils.ConvertInputFloat(Maxproduct);
+            if (maxP != double.MinValue)
             {
-                float maxP = Utils.ConvertInputFloat(Maxproduct);
-
-                if (maxP == Double.MinValue)
-                {
-                    Shell.Current.DisplayAlert("Error", $"The Max {MilkOrWool} Field is Incorrectly added","Ok");
-                    return;
-                }
-
                 if (SelectedType == nameof(Cow)) filtered = filtered.Where(x => x.Milk <= maxP);
                 else if (SelectedType == nameof(Sheep)) filtered = filtered.Where(x => x.Wool <= maxP);
                 else filtered = filtered.Where(x =>
                     (x.AnimalType == nameof(Cow) && x.Milk <= maxP) ||
                     (x.AnimalType == nameof(Sheep) && x.Wool <= maxP));
             }
-        });
+        }
+
+        return filtered;
     }
 }
