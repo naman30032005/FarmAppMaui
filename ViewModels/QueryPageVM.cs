@@ -54,12 +54,12 @@ public partial class QueryPageVM: BaseVM
            (x.AnimalType == nameof(Sheep) ? x.Wool : 0));
 
 
-        string message = $"Number of Livestocks: {count}\n" +
-            $"Percentage of selected Livestock: {percentage}\n" + 
-            $"Daily Tax: {dailyTax}\n" +
-            $"{profitOrLossToDisplay}: {profitOrLoss}\n" + 
-            $"Average Weight: {avgWeight}\n" + 
-            $"Produce Amount: {produce}";
+        string message = $"Number of Livestocks:\t{count}\n" +
+            $"Percentage of selected Livestock:\t{percentage:F1}%\n" + 
+            $"Daily Tax:\t{dailyTax:F2}\n" +
+            $"{profitOrLossToDisplay}:\t{profitOrLoss:F1}\n" + 
+            $"Average Weight:\t{avgWeight:F1}KG\n" + 
+            $"Produce Amount:\t{produce:F1}KG";
 
         await Shell.Current.DisplayAlert(
             "Statistics",
