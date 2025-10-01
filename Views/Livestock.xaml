@@ -75,6 +75,6 @@
         <Button Text="Update" IsEnabled="{Binding UpdateCommandEnabled}" Grid.Column="1" Grid.Row="2" Command="{Binding UpdateAnimalCommand}"/>
         <Button Text="Delete" Grid.Column="2" Grid.Row="2" Command="{Binding DeleteAnimalCommand}"
                 IsEnabled="{Binding DeleteCommandEnabled}"/>
-        <Button Text="Filter" Grid.Column="3" Grid.Row="2" Command="{Binding QueryAnimalCommand}"/>
+        <Button Text="Query" Grid.Column="3" Grid.Row="2" Command="{Binding QueryAnimalCommand}"/>
     </Grid>
 </ContentPage>
