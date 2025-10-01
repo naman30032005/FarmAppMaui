@@ -31,7 +31,7 @@ public class Calculator
     }
 
     // takes the list of all the animals and calculates different amounts to return the total income per day
-    public float IncomePerDay(List<AnimalVM> animals)
+    public static float IncomePerDay(List<AnimalVM> animals)
     {
         int cCount = 0, sCount = 0;
         foreach (var animal in animals)
@@ -44,7 +44,7 @@ public class Calculator
     }
 
     // takes the list of the animals to calculate different amounts and return the total expenses per day
-    public float ExpensePerDay(List<AnimalVM> animals)
+    public static float ExpensePerDay(List<AnimalVM> animals)
     {
         float totalExpense = 0;
         float totalWeight = 0;
