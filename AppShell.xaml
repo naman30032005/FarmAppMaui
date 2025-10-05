@@ -18,12 +18,8 @@
         <Tab Title="Reports">
             <ShellContent ContentTemplate="{DataTemplate views:Report}"/>
         </Tab>
-        <Tab Title="Statistic">
-            <ShellContent ContentTemplate="{DataTemplate views:Statistic}"/>
-        </Tab>
-        <Tab Title="Forecast">
-            <ShellContent ContentTemplate="{DataTemplate views:Forecast}"/>
-        </Tab>
+       
+       
     </TabBar>
 
 </Shell>

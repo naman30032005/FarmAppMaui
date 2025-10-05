@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Farm.ViewModels
 {
-    class ForecastVM
+    class ReportVM
     {
-
     }
 }
