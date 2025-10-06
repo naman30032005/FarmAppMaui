@@ -4,5 +4,50 @@
               x:Class="Farm.Views.DashBoard"
               xmlns:viewmodel="clr-namespace:Farm.ViewModels"
               xmlns:model="clr-namespace:Farm.Model">
-    
+
+
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="Label">
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Fill"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+    </ContentPage.Resources>
+
+
+    <Grid RowDefinitions="auto,auto,auto">
+        <Label Grid.Row="0" Text="Livestock Management System (LMS)" FontSize="50" HorizontalOptions="Center"/>
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="50" Padding="50">
+            <VerticalStackLayout Background="green" Padding="20" HeightRequest="200">
+                <Label Text="Total Animal " FontAttributes="Bold" WidthRequest="250" Style="{StaticResource Label}" />
+                <Label Text="{Binding totalAnimal}" Style="{StaticResource Label}" />
+            </VerticalStackLayout>
+
+
+
+            <VerticalStackLayout Background="green" Padding="20" HeightRequest="200">
+                <Label Text="Farm Daily Profit " FontAttributes="Bold" WidthRequest="250" Style="{StaticResource Label}" />
+                <Label Text="{Binding dailyProfit}" Style="{StaticResource Label}" />
+            </VerticalStackLayout>
+
+
+            <VerticalStackLayout Background="green" Padding="20" HeightRequest="200">
+                <Label Text="30 Day Tax" FontAttributes="Bold" WidthRequest="250" Style="{StaticResource Label}" />
+                <Label Text="{Binding govTax}" Style="{StaticResource Label}" />
+            </VerticalStackLayout>
+
+
+            <VerticalStackLayout Background="green" Padding="20" HeightRequest="200">
+                <Label Text="Average Weight " FontAttributes="Bold" WidthRequest="250" Style="{StaticResource Label}" />
+                <Label Text="{Binding avgWeight}" Style="{StaticResource Label}" />
+            </VerticalStackLayout>
+            
+        </HorizontalStackLayout>
+
+
+    </Grid>
+
+
+
 </ContentPage>

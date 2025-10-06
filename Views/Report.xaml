@@ -22,7 +22,7 @@
         <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="85" Padding=" 10">
             <VerticalStackLayout  Background="green" Padding="20" HeightRequest="300">
                 <Label Text="30 - Day Gov Tax" FontAttributes="Bold" WidthRequest="300" Style="{StaticResource Label}"/>
-                <Label Text="{Binding TotalAnimals}"  Style="{StaticResource Label}" />
+                <Label Text="{Binding govTax}"  Style="{StaticResource Label}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout  Background="green" Padding="20" HeightRequest="300">
@@ -44,9 +44,6 @@
                 <Label Text="{Binding avgCowProfit, StringFormat='*Average daily profit per cow: $ {0}  '}" Style="{StaticResource Label}" />
                 <Label Text="{Binding avgSheepProfit, StringFormat='*Average daily profit per sheep: $ {0}  '}" Style="{StaticResource Label}" />
                 <Label Text="Conclusion: more profit" Style="{StaticResource Label}" />
-
-
-
 
             </VerticalStackLayout>
             
