@@ -19,6 +19,8 @@
         <Tab Title="Reports">
             <ShellContent ContentTemplate="{DataTemplate views:Report}"/>
         </Tab>
+       
+       
     </TabBar>
 
 </Shell>

@@ -2,11 +2,51 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Farm.Views.Report"
+             xmlns:viewmodel="clr-namespace:Farm.ViewModels"
+             xmlns:model="clr-namespace:Farm.Model"
+             x:DataType="viewmodel:ReportVM"
              Title="Report">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="Label">
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Fill"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+    </ContentPage.Resources>
+
+
+    <Grid RowDefinitions="auto,auto, auto">
+        <Label Grid.Row="0" Text="Report" FontSize="60" TextColor="green" HorizontalTextAlignment="Center"/>
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="85" Padding=" 10">
+            <VerticalStackLayout  Background="green" Padding="20" HeightRequest="300">
+                <Label Text="30 - Day Gov Tax" FontAttributes="Bold" WidthRequest="300" Style="{StaticResource Label}"/>
+                <Label Text="{Binding govTax}"  Style="{StaticResource Label}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout  Background="green" Padding="20" HeightRequest="300">
+                <Label Text="Farm Daily Profit" FontAttributes="Bold" WidthRequest="300" Style="{StaticResource Label}"/>
+                <Label Text="{Binding DailyProfit}" Style="{StaticResource Label}" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout  Background="green" Padding="20" HeightRequest="300">
+                <Label Text="Each Animal Profitability" FontAttributes="Bold" WidthRequest="300" Style="{StaticResource Label}"/>
+                <Label Text="{Binding EachCowProfit}" Style="{StaticResource Label}" />
+                <Label Text="{Binding EachSheepProfit}" Style="{StaticResource Label}" />
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="2" Padding="10" HorizontalOptions="Center">
+            <VerticalStackLayout Background="Green" Padding="20" WidthRequest="1200" >
+                <Label Text="Base on current livestock data" Style="{StaticResource Label}" />
+                <Label Text="{Binding avgWeight, StringFormat='*Average weight of livestock: {0:F2} KG '}" Style="{StaticResource Label}" />
+                <Label Text="{Binding avgCowProfit, StringFormat='*Average daily profit per cow: $ {0}  '}" Style="{StaticResource Label}" />
+                <Label Text="{Binding avgSheepProfit, StringFormat='*Average daily profit per sheep: $ {0}  '}" Style="{StaticResource Label}" />
+                <Label Text="Conclusion: more profit" Style="{StaticResource Label}" />
+
+            </VerticalStackLayout>
+            
+        </HorizontalStackLayout>
+    </Grid>
 </ContentPage>
