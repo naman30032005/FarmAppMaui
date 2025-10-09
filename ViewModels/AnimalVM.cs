@@ -3,7 +3,7 @@
 // Animal Vm For Auto Updating the Observable Collection When an animal is updated
 public partial class AnimalVM : ObservableObject
 {
-    private readonly Animal animal;
+    public Animal animal { get; set; }
 
     public AnimalVM(Animal animal)
     {
@@ -42,7 +42,7 @@ public partial class AnimalVM : ObservableObject
     // syncing back to the model;
     partial void OnExpenseChanged(float value) => animal.Expense = value;
     partial void OnWeightChanged(float value) => animal.Weight = value;
-    partial void OnColourChanged(string value) => animal.Colour = value;
+    partial void OnColourChanged(string value) => animal.Colour = Utils.ConvertInputColor(value);
     partial void OnMilkChanged(float value) { if (animal is Cow cow) cow.Milk = value; }
     partial void OnWoolChanged(float value) { if (animal is Sheep sheep) sheep.Wool = value; }
 }

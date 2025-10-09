@@ -16,4 +16,10 @@ public partial class Livestock : ContentPage
 		await viewmodel.FillList();
 	}
 
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+        viewmodel.DeleteCommandEnabled = false;
+		viewmodel.UpdateCommandEnabled = false;
+    }
 }
