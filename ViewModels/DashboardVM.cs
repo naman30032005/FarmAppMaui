@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+namespace Farm.ViewModels;
 
-namespace Farm.ViewModels
+public partial class DashboardVM
 {
-    internal class DashboardVM
+    [RelayCommand]
+    public async Task ForecastPage()
     {
+        await Shell.Current.GoToAsync($"{nameof(Forecast)}", true);
     }
 }

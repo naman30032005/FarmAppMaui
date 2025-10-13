@@ -5,5 +5,6 @@ public partial class DashBoard : ContentPage
 	public DashBoard()
 	{
 		InitializeComponent();
+		BindingContext = new DashboardVM();
 	}
 }
