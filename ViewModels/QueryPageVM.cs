@@ -54,12 +54,12 @@ public partial class QueryPageVM: BaseVM
            (x.AnimalType == nameof(Sheep) ? x.Wool : 0));
 
 
-        string message = $"Number of Livestocks:  {count}\n" +
-            $"Percentage of selected Livestock:  {percentage:F1}%\n" + 
-            $"Daily Tax:  {dailyTax:F2}$\n" +
-            $"{profitOrLossToDisplay}:  {profitOrLoss:F1}$\n" + 
-            $"Average Weight:  {avgWeight:F1}KG\n" + 
-            $"Produce Amount:  {produce:F1}KG";
+        string message = $"{"Number of Livestocks",30}:  {count}\n\n" +
+            $"{"Percentage of selected Livestock",30}:  {percentage:F1}%\n\n" + 
+            $"{"Daily Tax",30}:  {dailyTax:F2}$\n\n" +
+            $"{profitOrLossToDisplay,30}:  {profitOrLoss:F1}$\n\n" + 
+            $"{"Average Weight",30}:  {avgWeight:F1}KG\n\n" + 
+            $"{"Produce Amount",30}:  {produce:F1}KG";
 
         System.Diagnostics.Debug.WriteLine($"Income: {Calculator.IncomePerDay(filteredList)}");
         System.Diagnostics.Debug.WriteLine($"Expenses: {Calculator.ExpensePerDay(filteredList)}");
