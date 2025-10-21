@@ -21,7 +21,7 @@
         <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" Spacing="50" Padding="20" >
             <VerticalStackLayout Background="green" Padding="20" HeightRequest="200" WidthRequest="200">
                 <Label Text="Total Animal " FontAttributes="Bold" Style="{StaticResource Label}" />
-                <Label Text="{Binding totalAnimal}" Style="{StaticResource Label}" />
+                <Label Text="{Binding TotalAnimal}" Style="{StaticResource Label}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Background="green" Padding="20" HeightRequest="200" WidthRequest="200">
