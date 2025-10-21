@@ -12,7 +12,6 @@
     <TabBar>
         <Tab Title="Dashboard">
             <ShellContent ContentTemplate="{DataTemplate views:DashBoard}"/>
-            <ShellContent ContentTemplate="{DataTemplate views:Forecast}"/>
         </Tab>
         <Tab Title="Livestock">
             <ShellContent ContentTemplate="{DataTemplate views:Livestock}"/>
