@@ -19,7 +19,7 @@
             <Label Text="Expense" FontSize="18" Grid.Column="0" Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center"/>
             <Entry Text="{Binding Animal.Expense}" Grid.Column="1" FontSize="18" TextColor="White" Grid.Row="4"/>
             <Label Text="{Binding MilkOrWool}" FontSize="18" Grid.Column="0" Grid.Row="5" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Entry Text="{Binding Animal.MilkOrWoolValue}" Grid.Column="1" FontSize="18" TextColor="White" Grid.Row="5"/>
+            <Entry Text="{Binding MilkOrWoolVal}" Grid.Column="1" FontSize="18" TextColor="White" Grid.Row="5"/>
         </Grid>
         
         <Button Grid.Column="1" Grid.Row="2" Text="Return" Command="{Binding ReturnToMenuCommand}"/>
