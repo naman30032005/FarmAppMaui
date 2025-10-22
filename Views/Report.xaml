@@ -12,12 +12,12 @@
             <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="Report" FontSize="50" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
 
             <Border Grid.Column="1" Grid.Row="2" Stroke="Green" StrokeThickness="4" StrokeShape="RoundRectangle 10 40 100 0" BackgroundColor="LightGreen">
-                <Border.Shadow>
+                <Border.Shadow> 
                     <Shadow Brush="grey" Opacity="0.7" Offset="5,5"/>
                 </Border.Shadow>
                 <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
                     <Label Text="Tax-Paid (30-days)" FontSize="28" FontAttributes="Bold"/>
-                    <Label Text="{Binding Tax,StringFormat='{0}:F1'}" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="{Binding Tax,StringFormat='{0:F1}'}" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
             
@@ -27,7 +27,7 @@
                 </Border.Shadow>
                 <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
                     <Label Text="{Binding ProfitOrLoss}" FontSize="28" FontAttributes="Bold"/>
-                    <Label Text="{Binding Porl}" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="{Binding Porl,StringFormat='{0:F1}'}" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
             
@@ -37,7 +37,7 @@
                 </Border.Shadow>
                 <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
                     <Label Text="Average Weight (ALL)" FontSize="28" FontAttributes="Bold"/>
-                    <Label Text="{Binding AvgWeight}" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="{Binding AvgWeight,StringFormat='{0:F1}'}" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
             
@@ -45,10 +45,10 @@
                 <Border.Shadow>
                     <Shadow Brush="grey" Opacity="0.7" Offset="5,5"/>
                 </Border.Shadow>
-                <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-                    <Label Text="Average Weight (PER)" FontSize="28" FontAttributes="Bold"/>
-                    <Label Text="0" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                    <Label Text="0" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                    <Label Text="Profit Per Day" FontSize="28" FontAttributes="Bold"/>
+                    <Label Text="{Binding CowProfit,StringFormat='Cow: {0:F1}$'}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="{Binding SheepProfit, StringFormat='Sheep: {0:F1}$'}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
         </Grid>

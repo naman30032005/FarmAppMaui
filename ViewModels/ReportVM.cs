@@ -14,6 +14,8 @@ public partial class ReportVM : BaseVM
     [ObservableProperty] private float tax;
     [ObservableProperty] private float avgWeight;
     [ObservableProperty,NotifyPropertyChangedFor(nameof(ProfitOrLoss))] private float porl;//profit or loss
+    [ObservableProperty] private float cowProfit;
+    [ObservableProperty] private float sheepProfit;
 
     public string ProfitOrLoss => (porl > 0) ? "Daily Profit: " : "Daily Loss: ";
 
@@ -23,12 +25,16 @@ public partial class ReportVM : BaseVM
         var avg = animals.Average(x => x.Weight);
         var tax = animals.Sum(x => x.Weight) * Calculator.GovernmentTax * 30;
         var porl = Calculator.IncomePerDay(animals) - Calculator.ExpensePerDay(animals);
+        var cp = Calculator.IncomePerDay(animals.Where(x => x.AnimalType == nameof(Cow)).ToList()) - Calculator.ExpensePerDay(animals.Where(x => x.AnimalType == nameof(Cow)).ToList());
+        var sp = Calculator.IncomePerDay(animals.Where(x => x.AnimalType == nameof(Sheep)).ToList()) - Calculator.ExpensePerDay(animals.Where(x => x.AnimalType == nameof(Sheep)).ToList());
 
         MainThread.BeginInvokeOnMainThread(() =>
         {
             AvgWeight = (float)avg;
             Tax = (float)tax;
             Porl = (float)porl;
+            CowProfit = cp;
+            SheepProfit = sp;
         });
     }
 
