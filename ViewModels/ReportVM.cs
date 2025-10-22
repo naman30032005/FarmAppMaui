@@ -24,6 +24,11 @@ public partial class ReportVM : BaseVM
     public async Task CalculateFields()
     {
         if (animals.Count == 0) await ReadData();
+        else
+        {
+            animals.Clear();
+            await ReadData();
+        }
         var avg = animals.Average(x => x.Weight);
         var tax = animals.Sum(x => x.Weight) * Calculator.GovernmentTax * 30;
         var porl = Calculator.IncomePerDay(animals) - Calculator.ExpensePerDay(animals);
