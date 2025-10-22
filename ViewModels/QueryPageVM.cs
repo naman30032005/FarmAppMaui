@@ -19,7 +19,7 @@ public partial class QueryPageVM: BaseVM
     public QueryPageVM(ReportVM vm)
     {
         Types = ["All", nameof(Cow), nameof(Sheep)];
-        SelectedType = Types[0];
+        SelectedType = Types.First();
         animals = vm.animals;
     }
 
