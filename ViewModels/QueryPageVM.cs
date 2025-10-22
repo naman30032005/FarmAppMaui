@@ -14,9 +14,9 @@ public partial class QueryPageVM: BaseVM
 
     public List<string> Types { get; set; }
 
-    private readonly ObservableCollection<AnimalVM> animals;
+    private readonly List<AnimalVM> animals;
 
-    public QueryPageVM(LivestockPageVM vm)
+    public QueryPageVM(ReportVM vm)
     {
         Types = ["All", nameof(Cow), nameof(Sheep)];
         SelectedType = Types[0];

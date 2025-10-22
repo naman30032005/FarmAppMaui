@@ -5,7 +5,7 @@ namespace Farm.ViewModels;
 public partial class ReportVM : BaseVM
 {
     private readonly DbOps _db;
-    List<AnimalVM> animals = new List<AnimalVM>();
+    public List<AnimalVM> animals = new List<AnimalVM>();
     public ReportVM(DbOps dbs)
     {
         _db = dbs;
