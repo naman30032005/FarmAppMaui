@@ -26,7 +26,7 @@ public partial class ReportVM : BaseVM
         var tax = animals.Sum(x => x.Weight) * Calculator.GovernmentTax * 30;
         var porl = Calculator.IncomePerDay(animals) - Calculator.ExpensePerDay(animals);
         var cp = Calculator.IncomePerDay(animals.Where(x => x.AnimalType == nameof(Cow)).ToList()) - Calculator.ExpensePerDay(animals.Where(x => x.AnimalType == nameof(Cow)).ToList());
-        var sp = Calculator.IncomePerDay(animals.Where(x => x.AnimalType == nameof(Sheep)).ToList()) - Calculator.ExpensePerDay(animals.Where(x => x.AnimalType == nameof(Cow)).ToList());
+        var sp = Calculator.IncomePerDay(animals.Where(x => x.AnimalType == nameof(Sheep)).ToList()) - Calculator.ExpensePerDay(animals.Where(x => x.AnimalType == nameof(Sheep)).ToList());
 
         MainThread.BeginInvokeOnMainThread(() =>
         {

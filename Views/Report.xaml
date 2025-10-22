@@ -45,10 +45,10 @@
                 <Border.Shadow>
                     <Shadow Brush="grey" Opacity="0.7" Offset="5,5"/>
                 </Border.Shadow>
-                <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-                    <Label Text="Average Weight (PER)" FontSize="28" FontAttributes="Bold"/>
-                    <Label Text="0" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                    <Label Text="0" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                    <Label Text="Profit Per Day" FontSize="28" FontAttributes="Bold"/>
+                    <Label Text="{Binding CowProfit,StringFormat='Cow: {0:F1}$'}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="{Binding SheepProfit, StringFormat='Sheep: {0:F1}$'}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
         </Grid>
