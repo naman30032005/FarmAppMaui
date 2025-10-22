@@ -7,15 +7,6 @@
              x:DataType="viewmodel:ReportVM"
              Title="Report">
 
-    <ContentPage.Resources>
-        <Style TargetType="Label" x:Key="Label">
-            <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            <Setter Property="HorizontalOptions" Value="Fill"/>
-            <Setter Property="TextColor" Value="White"/>
-            <Setter Property="FontSize" Value="15"/>
-        </Style>
-    </ContentPage.Resources>
-
     <ScrollView>
         <Grid RowDefinitions="10,80,*,*,*" ColumnDefinitions="50,*,*,50" RowSpacing="30" ColumnSpacing="20">
             <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="Report" FontSize="50" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
@@ -26,7 +17,7 @@
                 </Border.Shadow>
                 <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
                     <Label Text="Tax-Paid (30-days)" FontSize="28" FontAttributes="Bold"/>
-                    <Label Text="0" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="{Binding Tax,StringFormat='{0}:F1'}" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
             
@@ -35,8 +26,8 @@
                     <Shadow Brush="grey" Opacity="0.7" Offset="5,5"/>
                 </Border.Shadow>
                 <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-                    <Label Text="Daily Profit" FontSize="28" FontAttributes="Bold"/>
-                    <Label Text="0" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="{Binding ProfitOrLoss}" FontSize="28" FontAttributes="Bold"/>
+                    <Label Text="{Binding Porl}" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
             
@@ -46,7 +37,7 @@
                 </Border.Shadow>
                 <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
                     <Label Text="Average Weight (ALL)" FontSize="28" FontAttributes="Bold"/>
-                    <Label Text="0" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="{Binding AvgWeight}" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
             

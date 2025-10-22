@@ -22,6 +22,8 @@ public static class MauiProgram
         builder.Services.AddTransient<UpdateAnimalPage>();
         builder.Services.AddSingleton<QueryPageVM>();
         builder.Services.AddSingleton<QueryPage>();
+        builder.Services.AddSingleton<ReportVM>();
+        builder.Services.AddSingleton<Report>();
         builder.Services.AddSingleton<DashboardVM>();
         builder.Services.AddSingleton<DashBoard>();
 
