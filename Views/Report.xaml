@@ -47,8 +47,8 @@
                 </Border.Shadow>
                 <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
                     <Label Text="Profit Per Day" FontSize="28" FontAttributes="Bold"/>
-                    <Label Text="{Binding CowProfit,StringFormat='Cow: {0:F1}$'}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
-                    <Label Text="{Binding SheepProfit, StringFormat='Sheep: {0:F1}$'}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="{Binding CowProfitDisplay}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="{Binding SheepProfitDisplay}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
         </Grid>
