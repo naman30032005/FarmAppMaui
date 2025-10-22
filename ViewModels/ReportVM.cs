@@ -52,4 +52,16 @@ public partial class ReportVM : BaseVM
 
         IsBusy = false;
     }
+
+    [RelayCommand]
+    async Task QueryAnimal()
+    {
+        await Shell.Current.GoToAsync($"{nameof(QueryPage)}", true);
+    }
+
+    [RelayCommand]
+    async Task ForecastAnimal()
+    {
+        await Shell.Current.GoToAsync($"{nameof(Forecast)}", true);
+    }
 }

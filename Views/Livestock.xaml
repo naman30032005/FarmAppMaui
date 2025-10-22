@@ -14,11 +14,11 @@
             <Setter Property="FontSize" Value="15"/>
         </Style>
     </ContentPage.Resources>
-    <Grid RowDefinitions="Auto,*,50,20" ColumnDefinitions="*,*,*,*" RowSpacing="10" ColumnSpacing="20" Padding="30,5">
+    <Grid RowDefinitions="Auto,*,50,20" ColumnDefinitions="*,*,*" RowSpacing="10" ColumnSpacing="20" Padding="30,5">
 
-        <Label Text="Animals in the Farm" FontSize="30" FontAttributes="Bold" Grid.Column="1" HorizontalTextAlignment="Center" Grid.ColumnSpan="2" VerticalOptions="Center"/>
+        <Label Text="Animals in the Farm" FontSize="30" FontAttributes="Bold" Grid.Column="1" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
 
-        <HorizontalStackLayout VerticalOptions="Center" Grid.Column="3" Spacing="20" Padding="5" HorizontalOptions="End">
+        <HorizontalStackLayout VerticalOptions="Center" Grid.Column="2" Spacing="20" Padding="5" HorizontalOptions="End">
             <Label Text="Sort :" VerticalOptions="Center" FontAttributes="Bold"  FontSize="16" HorizontalOptions="Fill"/>
             <Picker ItemsSource="{Binding SortOptions}"
                     SelectedItem="{Binding SelectedSortOption}" 
@@ -75,6 +75,6 @@
         <Button Text="Update" IsEnabled="{Binding UpdateCommandEnabled}" Grid.Column="1" Grid.Row="2" Command="{Binding UpdateAnimalCommand}"/>
         <Button Text="Delete" Grid.Column="2" Grid.Row="2" Command="{Binding DeleteAnimalCommand}"
                 IsEnabled="{Binding DeleteCommandEnabled}"/>
-        <Button Text="Query" Grid.Column="3" Grid.Row="2" Command="{Binding QueryAnimalCommand}"/>
+        <!--<Button Text="Query" Grid.Column="3" Grid.Row="2" Command="{Binding QueryAnimalCommand}"/>-->
     </Grid>
 </ContentPage>

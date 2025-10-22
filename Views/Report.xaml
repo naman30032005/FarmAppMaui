@@ -51,6 +51,8 @@
                     <Label Text="{Binding SheepProfitDisplay}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Border>
+            <Button Text="Query" Grid.Column="1" Grid.Row="4" Command="{Binding QueryAnimalCommand}"/>
+            <Button Text="Forecast" Grid.Column="2" Grid.Row="4" Command="{Binding ForecastAnimalCommand}"/>
         </Grid>
     </ScrollView>
 </ContentPage>

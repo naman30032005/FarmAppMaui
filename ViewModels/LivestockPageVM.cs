@@ -74,13 +74,6 @@ public partial class LivestockPageVM:BaseVM
             IsBusy = false;
         }
     }
-
-    [RelayCommand]
-    async Task QueryAnimal()
-    {
-        await Shell.Current.GoToAsync($"{nameof(QueryPage)}", true);
-    }
-
     partial void OnSelectedAnimalChanged(AnimalVM value)
     {
         DeleteCommandEnabled = true;
