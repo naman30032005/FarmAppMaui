@@ -2,8 +2,17 @@ namespace Farm.Views;
 
 public partial class Report : ContentPage
 {
-	public Report()
+	ReportVM viewmodel;
+	public Report(ReportVM vm)
 	{
 		InitializeComponent();
+		BindingContext = vm;
+		viewmodel = vm;
 	}
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+		await viewmodel.CalculateFields();
+    }
 }

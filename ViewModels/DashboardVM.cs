@@ -1,12 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Farm.ViewModels;
 
-namespace Farm.ViewModels
+// Implementation part for the partial property
+public partial class DashboardVM : ObservableObject
 {
-    internal class DashboardVM
+    private readonly DbOps _dbOps;
+
+    [ObservableProperty]
+    private int totalAnimal;
+
+    public DashboardVM()
     {
+        _dbOps = new DbOps();
+        LoadTotalsAnimal();
+    }
+
+    [RelayCommand]
+    public async Task LoadTotalsAnimal()
+    {
+        totalAnimal = await _dbOps.GetTotalAnimalsAsync();
+    }
+
+    [RelayCommand]
+    public async Task ForecastPage()
+    {
+        await Shell.Current.GoToAsync($"{nameof(Forecast)}", true);
     }
 }
+

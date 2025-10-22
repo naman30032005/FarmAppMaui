@@ -20,7 +20,7 @@ public class Utils
         if (value is null) return string.Empty;
         else
         {
-            if (Color.TryParse(value,out Color color)) return color.ToArgbHex();
+            if (Color.TryParse(value,out Color color)) return value;
             else return BAD_Color;
         }
     }

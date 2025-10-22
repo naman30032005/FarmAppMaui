@@ -16,12 +16,12 @@
     </ContentPage.Resources>
 
 
-    <Grid RowDefinitions="*,auto,auto,*">
+    <Grid RowDefinitions="auto,auto,*, auto">
         <Label Grid.Row="1" Text="Livestock Management System (LMS)" FontSize="50" HorizontalOptions="Center"/>
         <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" Spacing="50" Padding="20" >
             <VerticalStackLayout Background="green" Padding="20" HeightRequest="200" WidthRequest="200">
                 <Label Text="Total Animal " FontAttributes="Bold" Style="{StaticResource Label}" />
-                <Label Text="{Binding totalAnimal}" Style="{StaticResource Label}" />
+                <Label Text="{Binding TotalAnimal}" Style="{StaticResource Label}" />
             </VerticalStackLayout>
 
             <VerticalStackLayout Background="green" Padding="20" HeightRequest="200" WidthRequest="200">
@@ -40,8 +40,11 @@
                 <Label Text="Average Weight " FontAttributes="Bold" Style="{StaticResource Label}" />
                 <Label Text="{Binding avgWeight}" Style="{StaticResource Label}" />
             </VerticalStackLayout>
-            
+
         </HorizontalStackLayout>
+    
+        <Button Text="Forecast" Grid.Row="3" HorizontalOptions="Fill" Command="{Binding ForecastPageCommand}" />
+
 
 
     </Grid>

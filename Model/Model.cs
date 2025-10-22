@@ -11,6 +11,8 @@ public class Animal
     public float Weight { get; set; }
 
     public string Colour{ get; set; }
+
+    public int Quantity { get; set; } //Total of animals
 }
 
 // Cow Class To store Data Unique to Cows
@@ -34,4 +36,10 @@ public class Cow : Animal
     {
         return $"{base.GetType().Name,-6}{ID,-6} {Expense,-8} {Weight,-7} {Colour,-7} {Wool,-5}";
     }
+}
+
+public class typeTotal
+{
+    public string category { get; set; } = string.Empty;
+    public int total { get; set; }
 }

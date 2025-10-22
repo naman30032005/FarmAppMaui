@@ -57,19 +57,22 @@ public partial class LivestockPageVM:BaseVM
     [RelayCommand]
     async Task DeleteAnimal()
     {
-        IsBusy = true;
+        if (await Shell.Current.DisplayAlert("Confirmation", "Are you Sure you want to Delete the Selected Entry","Yes","No"))
+        {
+            IsBusy = true;
 
-        await Task.Delay(1000);
+            await Task.Delay(1000);
 
-        await _db.Delete(SelectedAnimal.animal);
+            await _db.Delete(SelectedAnimal.animal);
 
-        animals.Remove(SelectedAnimal);
+            animals.Remove(SelectedAnimal);
+            
+            UpdateCommandEnabled = false;
 
-        UpdateCommandEnabled = false;
+            DeleteCommandEnabled = false;
 
-        DeleteCommandEnabled = false;
-
-        IsBusy = false;
+            IsBusy = false;
+        }
     }
 
     [RelayCommand]

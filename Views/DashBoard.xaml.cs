@@ -2,8 +2,16 @@ namespace Farm.Views;
 
 public partial class DashBoard : ContentPage
 {
-	public DashBoard()
+	private readonly DashboardVM _vm;
+	public DashBoard(DashboardVM vm)
 	{
 		InitializeComponent();
+		BindingContext = _vm = vm;
+	}
+
+	protected override async void OnAppearing()
+	{
+		base.OnAppearing();
+		await _vm.LoadTotalsAnimal();
 	}
 }

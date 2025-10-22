@@ -23,7 +23,8 @@ public class DbOps
         }
         // open the connection and create the tables if does not exist
         _conn = new SQLiteAsyncConnection(dbPath);
-        _conn.CreateTablesAsync<Cow, Sheep>().Wait();
+        _conn.CreateTablesAsync<Animal, Cow, Sheep>().Wait();
+
     }
 
     // Reads the data and returns a list of all Animals
@@ -44,5 +45,13 @@ public class DbOps
 
     //Update Operations
     public Task<int> Update(Animal animal) => _conn.UpdateAsync(animal);
+
+
+    public async Task<int> GetTotalAnimalsAsync()
+    {
+        var cows = await _conn.Table<Cow>().ToListAsync();
+        var sheep = await _conn.Table<Sheep>().ToListAsync();
+        return cows.Sum(x => x.Quantity) + sheep.Sum(x => x.Quantity);
+    }
 
 }
