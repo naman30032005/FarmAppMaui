@@ -34,14 +34,21 @@ public partial class UpdateAnimalPageVM : BaseVM
             await Shell.Current.DisplayAlert("Error", errorMsg, "OK");
             return;
         }
+        else if (await Shell.Current.DisplayAlert("Confirmation","Are you sure you want to make changes to the item?","yes","no"))
+        {
 
-        IsBusy = true;
+            IsBusy = true;
 
-        await _db.Update(Animal.animal);
+            await _db.Update(Animal.animal);
 
-        IsBusy = false;
+            IsBusy = false;
 
-        await ReturnToMenu();
+            await ReturnToMenu();
+        }
+        else
+        {
+            return;
+        }
     }
 
     private (bool isValid, string message) CheckFields()
