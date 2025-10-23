@@ -6,9 +6,18 @@ public partial class ReportVM : BaseVM
 {
     private readonly DbOps _db;
     public List<AnimalVM> animals = new List<AnimalVM>();
+    public string[] TypeOptions { get => [nameof(Cow), nameof(Sheep)]; }
+    [ObservableProperty] private string animalType;
+    [ObservableProperty] private string value;
+    [ObservableProperty] private float pOrL;
+    public string Prediction;
+
     public ReportVM(DbOps dbs)
     {
+        Prediction = "Profit";
         _db = dbs;
+        AnimalType = nameof(Cow);
+        Porl = 0;
     }
 
     [ObservableProperty] private float tax;
@@ -17,7 +26,7 @@ public partial class ReportVM : BaseVM
     [ObservableProperty,NotifyPropertyChangedFor(nameof(CowProfitDisplay)),NotifyPropertyChangedFor(nameof(SheepProfitDisplay))] private float cowProfit;
     [ObservableProperty,NotifyPropertyChangedFor(nameof(SheepProfitDisplay)),NotifyPropertyChangedFor(nameof(CowProfitDisplay))] private float sheepProfit;
 
-    public string ProfitOrLoss => (porl > 0) ? "Daily Profit: " : "Daily Loss: ";
+    public string ProfitOrLoss => (porl > 0) ? "Daily Profit " : "Daily Loss ";
     public string CowProfitDisplay => $"Cow: {CowProfit:F1}$ ({(CowProfit > SheepProfit ? "More" : "Less")} Profitable)";
     public string SheepProfitDisplay => $"Sheep: {SheepProfit:F1}$ ({(SheepProfit > CowProfit ? "More" : "Less")} Profitable)";
 
@@ -59,14 +68,26 @@ public partial class ReportVM : BaseVM
     }
 
     [RelayCommand]
-    async Task QueryAnimal()
+    async Task PredictProfit()
     {
-        await Shell.Current.GoToAsync($"{nameof(QueryPage)}", true);
-    }
+        var val = Utils.ConvertInputFloat(Value);
+        var profit = 0.0f;
 
-    [RelayCommand]
-    async Task ForecastAnimal()
-    {
-        await Shell.Current.GoToAsync($"{nameof(Forecast)}", true);
+        if (val == float.MinValue) { await Shell.Current.DisplayAlert("Error", "Please Enter a value before Predicting", "OK"); return; }
+
+        if (AnimalType == nameof(Cow))
+        {
+            profit = CowProfit * val;
+        }
+        else if (AnimalType == nameof(Sheep))
+        {
+            profit = SheepProfit * val;
+        }
+
+        if (profit > 0) Prediction = "Profit";
+        else Prediction = "Loss";
+
+        Porl = profit;
+        await Shell.Current.DisplayAlert("Prediction",$"Buying {val} {AnimalType}s would bring in an estimated daily{Prediction}: ${profit}", "Ok");
     }
 }
