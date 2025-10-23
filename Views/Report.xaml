@@ -56,16 +56,16 @@
 
             <Label Text="Forecast" FontSize="50" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
 
-            <Grid ColumnDefinitions="50,*,*,0.5*,Auto,50" RowDefinitions="*,*,*" Padding="30" ColumnSpacing="30" RowSpacing="20">
+            <Grid ColumnDefinitions="50,*,*,0.1*,*,50" RowDefinitions="*,*,*" Padding="30" ColumnSpacing="30" RowSpacing="20">
                 <Label Text="Select Type: " FontSize="20" Grid.Column="1" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"/>
                 <Picker ItemsSource="{Binding TypeOptions}" Grid.Column="2" SelectedItem="{Binding AnimalType}" />
                 <Label Text="Value: " FontSize="20" Grid.Column="1" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center"/>
                 <Entry Placeholder="0" Keyboard="Numeric" Text="{Binding Value}" Grid.Row="1" Grid.Column="2"/>
-                <Border Stroke="Green" StrokeThickness="4" StrokeShape="RoundRectangle 10" Grid.Column="3" Grid.RowSpan="3" BackgroundColor="LightGreen" Grid.ColumnSpan="2">
+                <Border Stroke="Green" StrokeThickness="4" StrokeShape="RoundRectangle 10" Grid.Column="4" Grid.RowSpan="3" BackgroundColor="LightGreen" Grid.ColumnSpan="2" Margin="0,0,0,20">
                     <Border.Shadow>
                         <Shadow Brush="Grey" Opacity="0.7" Offset="5,5"/>
                     </Border.Shadow>
-                    <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                    <VerticalStackLayout Padding="5" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
                         <Label Text="{Binding Prediction,StringFormat='Estimated {0}'}" FontSize="32" FontAttributes="Bold"/>
                         <Label Text="{Binding PredictedPorl,StringFormat='{0:F1}'}" FontSize="32" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
                     </VerticalStackLayout>

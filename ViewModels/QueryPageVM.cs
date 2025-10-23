@@ -16,11 +16,11 @@ public partial class QueryPageVM: BaseVM
 
     private readonly List<AnimalVM> animals;
 
-    public QueryPageVM(ReportVM vm)
+    public QueryPageVM(LivestockPageVM vm)
     {
         Types = ["All", nameof(Cow), nameof(Sheep)];
         SelectedType = Types.First();
-        animals = vm.animals;
+        animals = vm.animals.ToList();
     }
 
     [RelayCommand]
