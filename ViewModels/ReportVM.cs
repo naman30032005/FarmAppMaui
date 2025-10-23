@@ -9,15 +9,14 @@ public partial class ReportVM : BaseVM
     public string[] TypeOptions { get => [nameof(Cow), nameof(Sheep)]; }
     [ObservableProperty] private string animalType;
     [ObservableProperty] private string value;
-    [ObservableProperty] private float pOrL;
-    public string Prediction;
+    [ObservableProperty] private float predictedPorl;
+    [ObservableProperty] private string prediction;
 
     public ReportVM(DbOps dbs)
     {
         Prediction = "Profit";
         _db = dbs;
         AnimalType = nameof(Cow);
-        Porl = 0;
     }
 
     [ObservableProperty] private float tax;
@@ -87,7 +86,14 @@ public partial class ReportVM : BaseVM
         if (profit > 0) Prediction = "Profit";
         else Prediction = "Loss";
 
-        Porl = profit;
-        await Shell.Current.DisplayAlert("Prediction",$"Buying {val} {AnimalType}s would bring in an estimated daily{Prediction}: ${profit}", "Ok");
+        PredictedPorl = profit;
+        await Shell.Current.DisplayAlert("Prediction",$"Buying {val} {AnimalType}s would bring in an estimated daily{Prediction}: ${profit:F1}", "Ok");
+    }
+
+    [RelayCommand]
+    void Clear()
+    {
+        Value = string.Empty;
+        PredictedPorl = 0.0f;
     }
 }
