@@ -8,6 +8,7 @@ public partial class Report : ContentPage
 		InitializeComponent();
 		BindingContext = vm;
 		viewmodel = vm;
+		vm.PredictedPorl = 0;
 	}
 
     protected override async void OnAppearing()

@@ -18,7 +18,7 @@ public partial class AddAnimalPageVM : BaseVM
     public AddAnimalPageVM(DbOps dbs)
     {
         _dbs = dbs;
-        animalType = nameof(Cow);
+        AnimalType = nameof(Cow);
     }
 
     [RelayCommand]
