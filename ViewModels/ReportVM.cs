@@ -10,7 +10,9 @@ public partial class ReportVM : BaseVM
     [ObservableProperty] private float predictedPorl;
     [ObservableProperty] private string prediction;
     [ObservableProperty] private ChartEntry[] barChartEntries;
+    [ObservableProperty] private ChartEntry[] donutChartEntries;
     [ObservableProperty] private Chart bCV; // bar chart
+    [ObservableProperty] private Chart dCV; // Donut chart
 
     public ReportVM(DbOps dbs)
     {
@@ -49,6 +51,15 @@ public partial class ReportVM : BaseVM
         var bce = new[] { new ChartEntry(camt) { Label = "Cow", Color = SKColor.Parse("#3498db"), ValueLabel = $"{camt}" },
                           new ChartEntry(samt) { Label = "Sheep", Color = SKColor.Parse("#77d065"), ValueLabel = $"{samt}"  } };
 
+        var red = animals.Where(x => x.Colour.ToLowerInvariant() == "red").Count();
+        var black = animals.Where(x => x.Colour.ToLowerInvariant() == "black").Count();
+        var white = animals.Where(x => x.Colour.ToLowerInvariant() == "white").Count();
+
+        var dce = new[] { new ChartEntry(red) { Label = "Red", Color = SKColor.Parse("#FF0000"), ValueLabel = $"{red}"},
+                          new ChartEntry(black) { Label = "Black", Color = SKColor.Parse("#000000"), ValueLabel = $"{black}"},
+                          new ChartEntry(white) { Label = "White", Color = SKColor.Parse("#FFFFFF"), ValueLabel = $"{white}"}
+                        };
+
         MainThread.BeginInvokeOnMainThread(() =>
         {
             AvgWeight = (float)avg;
@@ -57,6 +68,7 @@ public partial class ReportVM : BaseVM
             CowProfit = cp;
             SheepProfit = sp;
             BarChartEntries = bce;
+            DonutChartEntries = dce;
         });
     }
 
@@ -101,13 +113,24 @@ public partial class ReportVM : BaseVM
     {
         MainThread.BeginInvokeOnMainThread(() => {
             BCV = new BarChart { Entries = BarChartEntries ?? Array.Empty<ChartEntry>(),
-                                 BackgroundColor = SKColor.Parse("#FFFFFF"),
+                                 BackgroundColor = SKColor.Parse("#DDDDDD"),
                                  LabelTextSize = 32,
                                  Margin = 30,
                                  LabelOrientation = Orientation.Horizontal,
                                  ValueLabelOrientation = Orientation.Horizontal,
                                  MaxValue = 10,
                                  MinValue = 0,
+            }; 
+        });
+    }
+    
+    partial void OnDonutChartEntriesChanged(ChartEntry[] value)
+    {
+        MainThread.BeginInvokeOnMainThread(() => {
+            DCV = new DonutChart { Entries = DonutChartEntries ?? Array.Empty<ChartEntry>(),
+                                 BackgroundColor = SKColor.Parse("#DDDDDD"),
+                                 LabelTextSize = 32,
+                                 Margin = 30
             }; 
         });
     }
