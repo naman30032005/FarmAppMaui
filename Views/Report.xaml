@@ -4,6 +4,7 @@
              x:Class="Farm.Views.Report"
              xmlns:viewmodel="clr-namespace:Farm.ViewModels"
              xmlns:model="clr-namespace:Farm.Model"
+             xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
              x:DataType="viewmodel:ReportVM"
              Title="Report">
 
@@ -52,6 +53,11 @@
                         <Label Text="{Binding SheepProfitDisplay}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
                     </VerticalStackLayout>
                 </Border>
+            </Grid>
+
+            <Grid RowDefinitions="30,*,30" ColumnDefinitions="50,*,*,50" ColumnSpacing="20" RowSpacing="30">
+                <micro:ChartView Grid.Column="1" Grid.Row="1" Chart="{Binding BCV}" MinimumHeightRequest="400"/>
+                <micro:ChartView Grid.Column="2" Grid.Row="1" Chart="{Binding DCV}" MinimumHeightRequest="400"/>
             </Grid>
 
             <Label Text="Forecast" FontSize="50" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalOptions="Center"/>

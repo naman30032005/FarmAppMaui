@@ -7,3 +7,6 @@ global using Farm.Model;
 global using Farm.ViewModels;
 global using Farm.Utility;
 global using Farm.Views;
+global using Microcharts;
+global using Microcharts.Maui;
+global using SkiaSharp;
