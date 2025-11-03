@@ -6,48 +6,73 @@
               xmlns:model="clr-namespace:Farm.Model">
 
 
-    <ContentPage.Resources>
-        <Style TargetType="Label" x:Key="Label">
-            <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            <Setter Property="HorizontalOptions" Value="Fill"/>
-            <Setter Property="TextColor" Value="White"/>
-            <Setter Property="FontSize" Value="15"/>
-        </Style>
-    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" VerticalOptions="Start">
+            <Grid ColumnDefinitions="*, 0.8*">
+                <Image Grid.ColumnSpan="2" Source="background.jpg"
+                Aspect="AspectFill"/>
 
+                <BoxView Grid.Column="1" BackgroundColor="#66000000"/>
 
-    <Grid RowDefinitions="auto,auto,*, auto">
-        <Label Grid.Row="1" Text="Livestock Management System (LMS)" FontSize="50" HorizontalOptions="Center"/>
-        <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" Spacing="50" Padding="20" >
-            <VerticalStackLayout Background="green" Padding="20" HeightRequest="200" WidthRequest="200">
-                <Label Text="Total Animal " FontAttributes="Bold" Style="{StaticResource Label}" />
-                <Label Text="{Binding TotalAnimal}" Style="{StaticResource Label}" />
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" Padding="40">
+                    <Image   Source="logo.png" WidthRequest="300" HorizontalOptions="Center"/>
+                    <Label Text="Ewpowering local farmers" TextColor="White" FontSize="50" FontAttributes="Bold" HorizontalOptions="Start" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <VerticalStackLayout Spacing="20" Padding="12">
+                <HorizontalStackLayout Spacing="30" Padding="15" HorizontalOptions="Center">
+                    <Frame WidthRequest="350" Padding="20" CornerRadius="30">
+                        <VerticalStackLayout Spacing="50">
+                            <Label Text="Total Animal " FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Text="{Binding TotalAnimal}" HorizontalOptions="Center"  FontSize="40"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame WidthRequest="350" Padding="20" CornerRadius="30">
+                        <VerticalStackLayout Spacing="50">
+                            <Label Text="Cow" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Text="{Binding TotalCow}" HorizontalOptions="Center" FontSize="40"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame WidthRequest="350" Padding="20" CornerRadius="30">
+                        <VerticalStackLayout Spacing="50">
+                            <Label Text="Sheep" FontAttributes="Bold" FontSize="20"  HorizontalOptions="Center"/>
+                            <Label Text="{Binding TotalSheep}" HorizontalOptions="Center"  FontSize="40"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </HorizontalStackLayout>
+                <BoxView HeightRequest="40" Color="Transparent" />
+            </VerticalStackLayout>
+            <VerticalStackLayout Spacing="15" Padding="15">
+                <HorizontalStackLayout Spacing="40" Padding="30" HorizontalOptions="Center">
+                    <Frame WidthRequest="350" Padding="20" CornerRadius="30">
+                        <VerticalStackLayout Spacing="50">
+                            <Label Text="{Binding ProfitorLoss}" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Prol, StringFormat='{0:F1}'}" HorizontalOptions="Center"  FontSize="40"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame WidthRequest="350" Padding="20" CornerRadius="30">
+                        <VerticalStackLayout Spacing="50">
+                            <Label Text="Cow's Profit" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
+                            <Label Text="{Binding CowProfit, StringFormat='{0:F1}'}" HorizontalOptions="Center" FontSize="40"/>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <Frame WidthRequest="350" Padding="20" CornerRadius="30">
+                        <VerticalStackLayout Spacing="50">
+                            <Label Text="Sheep's Profit " FontAttributes="Bold" FontSize="20"  HorizontalOptions="Center"/>
+                            <Label Text="{Binding SheepProfit, StringFormat='{0:F1}'}" HorizontalOptions="Center"  FontSize="40"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </HorizontalStackLayout>
+                <BoxView HeightRequest="200" Color="Transparent" />
             </VerticalStackLayout>
 
-            <VerticalStackLayout Background="green" Padding="20" HeightRequest="200" WidthRequest="200">
-                <Label Text="Farm Daily Profit " FontAttributes="Bold" Style="{StaticResource Label}" />
-                <Label Text="{Binding dailyProfit}" Style="{StaticResource Label}" />
-            </VerticalStackLayout>
-
-
-            <VerticalStackLayout Background="green" Padding="20" HeightRequest="200" WidthRequest="200">
-                <Label Text="30 Day Tax" FontAttributes="Bold"  Style="{StaticResource Label}" />
-                <Label Text="{Binding govTax}" Style="{StaticResource Label}" />
-            </VerticalStackLayout>
-
-
-            <VerticalStackLayout Background="green" Padding="20" HeightRequest="200" WidthRequest="200">
-                <Label Text="Average Weight " FontAttributes="Bold" Style="{StaticResource Label}" />
-                <Label Text="{Binding avgWeight}" Style="{StaticResource Label}" />
-            </VerticalStackLayout>
-
-        </HorizontalStackLayout>
-    
-        <Button Text="Forecast" Grid.Row="3" HorizontalOptions="Fill" Command="{Binding ForecastPageCommand}" />
-
-
-
-    </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 
 
 
