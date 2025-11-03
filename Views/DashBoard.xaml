@@ -8,26 +8,23 @@
 
 
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="20">
+            <Grid RowDefinitions="50,*" ColumnDefinitions="50,*,*,*,50" ColumnSpacing="20">
+                <Image  Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Source="alternate.png" Aspect="AspectFill" HorizontalOptions="Fill" VerticalOptions="Fill" />
 
-            <Grid RowDefinitions="Auto" ColumnDefinitions="*,*,*,50">
-                <Image Grid.ColumnSpan="4" Source="background.jpg" Aspect="AspectFill"/>
-
-                <BoxView Grid.Column="2"  Grid.ColumnSpan="2" BackgroundColor="#66000000"/>
-
-                <VerticalStackLayout Grid.Column="2" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="End" Padding="40">
-                    <Image Source="logo.png" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill"/>
-                    <Label Text="Ewpowering local farmers" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalOptions="Start" />
+                <VerticalStackLayout Grid.Column="3" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Image Source="logo.png" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFit"/>
+                    <Label Text='" Empowering local farmers "' TextColor="White" FontSize="22" FontAttributes="Bold" HorizontalOptions="Center" />
                 </VerticalStackLayout>
             </Grid>
 
-            <Grid ColumnDefinitions="50,*,*,*,50" RowDefinitions="50,*,*,50">
+            <Grid ColumnDefinitions="50,*,*,*,50" RowDefinitions="50,*,*,50" RowSpacing="20" ColumnSpacing="20">
                 <Border Stroke="Green" StrokeThickness="4" StrokeShape="RoundRectangle 20" BackgroundColor="LightGreen" Grid.Row="1" Grid.Column="1" >
                     <Border.Shadow>
                         <Shadow Brush="grey" Opacity="0.7" Offset="5,5"/>
                     </Border.Shadow>
                     <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-                        <Label Text="Total Animals " FontAttributes="Bold" FontSize="24" HorizontalOptions="Center"/>
+                        <Label Text="Total Animals " FontAttributes="Bold" FontSize="32" HorizontalOptions="Center"/>
                         <Label Text="{Binding TotalAnimal}" HorizontalOptions="Center" FontSize="32" FontAttributes="Bold"/>
                     </VerticalStackLayout>
                 </Border>
@@ -37,7 +34,7 @@
                         <Shadow Brush="grey" Opacity="0.7" Offset="5,5"/>
                     </Border.Shadow>
                     <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-                        <Label Text="Total Cows " FontAttributes="Bold" FontSize="24" HorizontalOptions="Center"/>
+                        <Label Text="Total Cows " FontAttributes="Bold" FontSize="32" HorizontalOptions="Center"/>
                         <Label Text="{Binding TotalCow}" HorizontalOptions="Center" FontSize="32" FontAttributes="Bold"/>
                     </VerticalStackLayout>
                 </Border>
@@ -47,7 +44,7 @@
                         <Shadow Brush="grey" Opacity="0.7" Offset="5,5"/>
                     </Border.Shadow>
                     <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-                        <Label Text="Total Sheeps " FontAttributes="Bold" FontSize="24" HorizontalOptions="Center"/>
+                        <Label Text="Total Sheeps " FontAttributes="Bold" FontSize="32" HorizontalOptions="Center"/>
                         <Label Text="{Binding TotalSheep}" HorizontalOptions="Center" FontSize="32" FontAttributes="Bold"/>
                     </VerticalStackLayout>
                 </Border>
@@ -57,7 +54,7 @@
                         <Shadow Brush="grey" Opacity="0.7" Offset="5,5"/>
                     </Border.Shadow>
                     <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-                        <Label Text="{Binding ProfitorLoss}" FontAttributes="Bold" FontSize="24" HorizontalOptions="Center"/>
+                        <Label Text="{Binding ProfitorLoss}" FontAttributes="Bold" FontSize="32" HorizontalOptions="Center"/>
                         <Label Text="{Binding Prol, StringFormat='{0:F1}'}" HorizontalOptions="Center" FontSize="32" FontAttributes="Bold"/>
                     </VerticalStackLayout>
                 </Border>
@@ -67,17 +64,17 @@
                         <Shadow Brush="grey" Opacity="0.7" Offset="5,5"/>
                     </Border.Shadow>
                     <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-                        <Label Text="Cow's Profit" FontAttributes="Bold" FontSize="24" HorizontalOptions="Center"/>
+                        <Label Text="Cow's Profit" FontAttributes="Bold" FontSize="32" HorizontalOptions="Center"/>
                         <Label Text="{Binding CowProfit, StringFormat='{0:F1}'}" HorizontalOptions="Center" FontSize="32" FontAttributes="Bold"/>
                     </VerticalStackLayout>
                 </Border>
 
-                <Border Stroke="Green" StrokeThickness="4" StrokeShape="RoundRectangle 20" BackgroundColor="LightGreen" Grid.Row="2" Grid.Column="2" >
+                <Border Stroke="Green" StrokeThickness="4" StrokeShape="RoundRectangle 20" BackgroundColor="LightGreen" Grid.Row="2" Grid.Column="3" >
                     <Border.Shadow>
                         <Shadow Brush="grey" Opacity="0.7" Offset="5,5"/>
                     </Border.Shadow>
                     <VerticalStackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
-                        <Label Text="Sheep's Profit" FontAttributes="Bold" FontSize="24" HorizontalOptions="Center"/>
+                        <Label Text="Sheep's Profit" FontAttributes="Bold" FontSize="32" HorizontalOptions="Center"/>
                         <Label Text="{Binding SheepProfit, StringFormat='{0:F1}'}" HorizontalOptions="Center" FontSize="32" FontAttributes="Bold"/>
                     </VerticalStackLayout>
                 </Border>
