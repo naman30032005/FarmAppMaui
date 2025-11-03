@@ -12,6 +12,6 @@ public partial class DashBoard : ContentPage
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
-		await _vm.LoadTotalsAnimal();
+		await _vm.CalculateField();
 	}
 }
