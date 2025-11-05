@@ -1,4 +1,6 @@
-﻿namespace Farm.ViewModels;
+﻿using System.Diagnostics;
+
+namespace Farm.ViewModels;
 
 public partial class LivestockPageVM:BaseVM
 {

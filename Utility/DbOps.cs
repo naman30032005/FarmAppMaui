@@ -23,7 +23,7 @@ public class DbOps
         }
         // open the connection and create the tables if does not exist
         _conn = new SQLiteAsyncConnection(dbPath);
-        _conn.CreateTablesAsync<Animal, Cow, Sheep>().Wait();
+        _conn.CreateTablesAsync<Cow, Sheep>().Wait();
 
     }
 
