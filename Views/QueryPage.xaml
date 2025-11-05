@@ -6,8 +6,9 @@
              x:DataType="viewmodel:QueryPageVM"
              Shell.PresentationMode="ModalAnimated"
              Title="QueryPage">
-    <Grid ColumnDefinitions="50,*,*,50" RowDefinitions="50,*,50,50" RowSpacing="20" ColumnSpacing="50">
-        <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="20">
+    <Grid ColumnDefinitions="50,*,*,50" RowDefinitions="5,70,*,50,50" RowSpacing="30" ColumnSpacing="50">
+        <Label Text="Query Livestock" FontSize="40" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="1" VerticalOptions="Center"/>
+        <Grid Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="30">
             <Label Text="Select Type: " FontSize="18" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"/>
             <Picker SelectedItem="{Binding SelectedType}" SelectedIndex="0" ItemsSource="{Binding Types}" Grid.Row="0" Grid.Column="1"/> 
 
@@ -40,7 +41,7 @@
 
         </Grid>
 
-        <Button Text="Back" Grid.Row="2" Grid.Column="1" Command="{Binding ReturnToMenuCommand}"/>
-        <Button Text="View Statistics" Grid.Row="2" Grid.Column="2" Command="{Binding StatisticsCommand}"/>
+        <Button Text="Back" Grid.Row="3" Grid.Column="1" Command="{Binding ReturnToMenuCommand}"/>
+        <Button Text="View Statistics" Grid.Row="3" Grid.Column="2" Command="{Binding StatisticsCommand}"/>
     </Grid>
 </ContentPage>

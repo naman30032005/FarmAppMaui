@@ -6,8 +6,9 @@
              x:DataType="viewmodel:UpdateAnimalPageVM"
              Shell.PresentationMode="ModalAnimated"
              Title="UpdateAnimalPage">
-    <Grid ColumnDefinitions="50,*,*,50" RowDefinitions="50,*,50,20" ColumnSpacing="20" RowSpacing="10">
-        <Grid Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="20">
+    <Grid ColumnDefinitions="50,*,*,50" RowDefinitions="5,70,*,50,20" ColumnSpacing="20" RowSpacing="30">
+        <Label Text="Update Livestock" FontSize="40" Grid.Column="1" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="1" VerticalOptions="Center"/>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="20">
             <Label Text="ID: " FontSize="18" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
             <Entry IsEnabled="False" Text="{Binding Animal.ID}" Grid.Column="1" FontSize="18" TextColor="Grey"/>
             <Label Text="Type: " FontSize="18" Grid.Column="0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -22,7 +23,7 @@
             <Entry Text="{Binding MilkOrWoolVal}" Grid.Column="1" FontSize="18" TextColor="White" Grid.Row="5"/>
         </Grid>
         
-        <Button Grid.Column="1" Grid.Row="2" Text="Return" Command="{Binding ReturnToMenuCommand}"/>
-        <Button Grid.Column="2" Grid.Row="2" Text="Save" Command="{Binding UpdateCommand}"/>
+        <Button Grid.Column="1" Grid.Row="3" Text="Return" Command="{Binding ReturnToMenuCommand}"/>
+        <Button Grid.Column="2" Grid.Row="3" Text="Save" Command="{Binding UpdateCommand}"/>
     </Grid>
 </ContentPage>

@@ -10,7 +10,7 @@ public class Utils
         if (value is null) return BAD_DOUBLE;
         else
         {
-            if (float.TryParse(value, out float f)) return f;
+            if (float.TryParse(value, out float f) && f > 0) return f;
             else return BAD_DOUBLE;
         }
     }
