@@ -13,7 +13,6 @@ public class DbOps
         string dbName = "FarmData.db";
         string dbPath = Path.Combine(Current.AppDataDirectory, dbName);
 
-        // create a file at that path is doesn't already exist
         if (!File.Exists(dbPath))
         {
             using Stream s = Current.OpenAppPackageFileAsync(dbName).Result;
@@ -21,6 +20,7 @@ public class DbOps
             s.CopyTo(ms);
             File.WriteAllBytes(dbPath, ms.ToArray());
         }
+
         // open the connection and create the tables if does not exist
         _conn = new SQLiteAsyncConnection(dbPath);
         _conn.CreateTablesAsync<Cow, Sheep>().Wait();
