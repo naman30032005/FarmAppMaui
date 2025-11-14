@@ -1,4 +1,4 @@
-# ?? Farm Management Dashboard — .NET MAUI App
+# Farm Management Dashboard — .NET MAUI App
 
 A cross-platform **.NET MAUI** application designed to simplify farm monitoring through a clean, responsive dashboard.  
 This project highlights **MVVM architecture**, **data binding**, **Shell navigation**, **Microcharts**, and **modern XAML UI design**.
